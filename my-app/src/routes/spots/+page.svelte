@@ -9,10 +9,10 @@
   });
 </script>
 
-<div class="flex flex-wrap _1 gap-7 ">
+<div class="flex flex-wrap _1 gap-7 justify-center">
   <!--contains boxes-->
   {#each spots as spot}
-    <div class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2"><!--each box-->
+    <div class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2 font-sans"><!--each box-->
       
       <div class="flex _title">
         <p class="flex">{spot.name}</p>
