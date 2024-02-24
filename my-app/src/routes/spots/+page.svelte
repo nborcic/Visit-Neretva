@@ -26,7 +26,7 @@
         <div class="flex flex-col ">
           <!--Discription and review rate-->
           <div class="flex text-sm">{spot.description}</div>
-          <div class="flex">{spot.averageRating}</div>
+          <div class="flex">{spot.averageRating}</div><a href="/spots/{spot.id}">Show more</a>
         </div>
       </div>
     </div>

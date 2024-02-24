@@ -92,7 +92,7 @@ export const spots = [
       pic: "Spots_bike_trail.JPG",
       id:10,
     },
-    {
+    { 
       name: "Yoga Retreat",
       type: "Activity",
       description:
@@ -102,3 +102,7 @@ export const spots = [
       id:11,
     },
   ];
+
+
+
+
