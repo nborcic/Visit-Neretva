@@ -1,8 +1,9 @@
 <script>
   import "../app.css";
+  
 </script>
 
-<div class="flex flex-col items-center h-screen bg-white container">
+<div class="flex flex-col items-center h-screen bg-white">
   <div class="max-w-[1280px] gap-4 flex flex-col">
     <header class="sticky top-0 bg-white w-full">
       <div
@@ -59,10 +60,11 @@
             /></a
           >
         </div>
-        <div class="text-2xl font-semibold">Visit Neretva</div>
+        <div class="text-2xl font-semibold"><a href="/spots/">Neretva</a></div>
         <div class="flex">
           <ul class="flex flex-row gap-2 font-semibold">
-            <li>Bike</li>
+            <li><a href="#" on:click={() => navigateToBike()}>Bike</a></li>
+
             <li>Eat</li>
             <li>Hike</li>
             <li>Skydiving</li>

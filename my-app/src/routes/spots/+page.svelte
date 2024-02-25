@@ -48,11 +48,3 @@
     </div>
   {/each}
 </div>
-
-<style>
-  @media (max-width: 700px) {
-    .container {
-      flex-direction: column;
-    }
-  }
-</style>

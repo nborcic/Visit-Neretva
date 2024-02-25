@@ -1,5 +1,6 @@
-import { spots } from '$lib/sampleData';
+import { spots } from "$lib/sampleData";
 export async function load({ params }) {
-  return {spots};
+  return { spots };
 
+  
 }

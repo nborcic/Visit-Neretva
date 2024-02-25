@@ -21,7 +21,7 @@ export const spots = [
       type: "Activity",
       description: "Challenging vertical climbs for all skill levels.",
       averageRating: 4.8,
-      pic: "Mountain Biking Blast.jpg",
+      pic: "rock clymbing school.jpg",
       id:2,
     },
     {
