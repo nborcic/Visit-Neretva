@@ -21,7 +21,7 @@ export const spots = [
       type: "Activity",
       description: "Challenging vertical climbs for all skill levels.",
       averageRating: 4.8,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Mountain Biking Blast.jpg",
       id:2,
     },
     {
@@ -29,7 +29,7 @@ export const spots = [
       type: "Activity",
       description: "Explore rivers and coastlines with guided kayak tours.",
       averageRating: 4.6,
-      pic: "Spots_bike_trail.JPG",
+      pic: "kayak adventures.jpg",
       id:3,
     },
     {
@@ -37,7 +37,7 @@ export const spots = [
       type: "Activity",
       description: "Discover breathtaking trails and scenic views.",
       averageRating: 4.9,
-      pic: "Spots_bike_trail.JPG",
+      pic: "trails expedition.jpg",
       id:4,
     },
     {
@@ -45,7 +45,7 @@ export const spots = [
       type: "Activity",
       description: "Experience thrilling downhill and cross-country trails.",
       averageRating: 4.4,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Mountain Biking Blast.jpg",
       id:5,
     },
     {
@@ -54,7 +54,7 @@ export const spots = [
       description:
         "Skydive with experienced instructors for an adrenaline rush.",
       averageRating: 4.9,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Skydiving Thrill.jpg",
       id:6,
     },
     {
@@ -62,7 +62,7 @@ export const spots = [
       type: "Activity",
       description: "Learn to sail in the open sea with certified instructors.",
       averageRating: 4.3,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Sailing School.jpg",
       id:7,
     },
     {
@@ -71,7 +71,7 @@ export const spots = [
       description:
         "Get up close with nature and wildlife in their natural habitat.",
       averageRating: 4.7,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Wildlife Safari.webp",
       id:8,
     },
     {
@@ -79,7 +79,7 @@ export const spots = [
       type: "Activity",
       description: "Explore underwater worlds and marine life.",
       averageRating: 4.8,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Scuba Diving Discovery.jpg",
       id:9,
 
     },
@@ -89,7 +89,7 @@ export const spots = [
       description:
         "Hit the slopes with professional coaching and fun snowboarding sessions.",
       averageRating: 4.6,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Snowboarding Camp.webp",
       id:10,
     },
     { 
@@ -98,7 +98,7 @@ export const spots = [
       description:
         "Relax and rejuvenate with yoga sessions in serene locations.",
       averageRating: 4.9,
-      pic: "Spots_bike_trail.JPG",
+      pic: "Yoga Retreat.jpg",
       id:11,
     },
   ];

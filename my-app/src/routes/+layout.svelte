@@ -59,10 +59,16 @@
             /></a
           >
         </div>
-        <div class="text-2xl font-semibold">Visit Neretva </div>
-        <div class="flex"><ul class="flex flex-row gap-2 font-semibold"><li>Bike</li><li>Eat</li><li>Hike</li><li>Skydiving</li></ul></div>
+        <div class="text-2xl font-semibold">Visit Neretva</div>
+        <div class="flex">
+          <ul class="flex flex-row gap-2 font-semibold">
+            <li>Bike</li>
+            <li>Eat</li>
+            <li>Hike</li>
+            <li>Skydiving</li>
+          </ul>
+        </div>
       </div>
-     
     </header>
     <div class="flex flex-col justify-center items-center bg-gray-100">
       <main class="w-full p-4">
