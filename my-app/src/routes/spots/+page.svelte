@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "$app/navigation";
   import { onMount } from "svelte";
 
   export let data;
@@ -7,13 +8,26 @@
   onMount(() => {
     console.log(data);
   });
+
+  /**
+   * @param {number} spotsid
+   */
+  function navigateToSpot(spotsid) {
+    goto(`/spots/${spotsid}`);
+  }
 </script>
 
 <div class="flex flex-wrap _1 gap-7 justify-center">
   <!--contains boxes-->
+
   {#each spots as spot}
-    <div class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2 font-sans"><!--each box-->
-      
+    <div
+      class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2 font-sans"
+      role="presentation"
+      on:click={() => navigateToSpot(spot.id)}
+    >
+      <!--each box-->
+
       <div class="flex _title">
         <p class="flex">{spot.name}</p>
       </div>
@@ -23,10 +37,11 @@
           alt="bikeTrail"
           class="h-32 w-[180px]"
         />
-        <div class="flex flex-col ">
+        <div class="flex flex-col">
           <!--Discription and review rate-->
           <div class="flex text-sm">{spot.description}</div>
-          <div class="flex">{spot.averageRating}</div><a href="/spots/{spot.id}">Show more</a>
+          <div class="flex">{spot.averageRating}</div>
+          <a href="/spots/{spot.id}">Show more</a>
         </div>
       </div>
     </div>
