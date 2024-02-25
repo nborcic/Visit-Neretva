@@ -1,6 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
+  import Layout from "../+layout.svelte";
 
   export let data;
   let spots = data.spots;
@@ -22,7 +23,7 @@
 
   {#each spots as spot}
     <div
-      class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2 font-sans"
+      class="flex flex-col items-center gap-2 border border-gray-400 hover:cursor-pointer rounded shadow w-80 p-2 font-sans"
       role="presentation"
       on:click={() => navigateToSpot(spot.id)}
     >
@@ -47,3 +48,11 @@
     </div>
   {/each}
 </div>
+
+<style>
+  @media (max-width: 700px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>

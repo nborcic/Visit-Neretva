@@ -2,13 +2,13 @@
   import "../app.css";
 </script>
 
-<div class="flex flex-col items-center h-screen bg-white">
+<div class="flex flex-col items-center h-screen bg-white container">
   <div class="max-w-[1280px] gap-4 flex flex-col">
     <header class="sticky top-0 bg-white w-full">
       <div
         class="w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
       >
-        <div class="flex justify-between items-center p-4">
+        <div class="flex justify-between items-center p-4 border bg-amber-200">
           <div class="flex gap-3 items-center">
             <img
               src="/Spots_images/spotslogo.jpeg"
@@ -18,7 +18,7 @@
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                >TEXT1</span
+                >Explore Neretva</span
               >
             </a>
           </div>
