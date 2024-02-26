@@ -1,10 +1,7 @@
 <script>
-
-
   import "../app.css";
   import "$lib/sampleData.ts";
-  
-  import { pics } from "c:/Users/John Dou/Desktop/VS Code Portable/!Projects/Sv.kit/my-app/src/lib/carouselPics"
+  import "../app.css";
 </script>
 
 <div class="flex flex-col items-center h-screen bg-white">
@@ -69,7 +66,7 @@
         <div class="flex">
           <ul class="flex flex-row gap-2 font-semibold">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <li><a href="#" >Bike</a></li>
+            <li><a href="#">Bike</a></li>
 
             <li>Eat</li>
             <li>Hike</li>

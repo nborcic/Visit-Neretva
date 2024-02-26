@@ -1,8 +1,9 @@
 <script>
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
-  import Layout from "../+layout.svelte";
-
+  import { pics } from "$lib/carouselPics";
+  import emblaCarouselSvelte from "embla-carousel-svelte";
+  import Autoplay from "embla-carousel-autoplay";
   export let data;
   let spots = data.spots;
 
@@ -16,6 +17,8 @@
   function navigateToSpot(spotsid) {
     goto(`/spots/${spotsid}`);
   }
+  let options = { loop: true };
+  let plugins = [Autoplay(400)];
 </script>
 
 <div class="flex flex-wrap _1 gap-7 justify-center">
@@ -48,3 +51,32 @@
     </div>
   {/each}
 </div>
+
+<div
+  class="embla m-7"
+  use:emblaCarouselSvelte={{ options, plugins }}
+  on:emblaInit={onInit}
+>
+  <div class="embla__container">
+    {#each pics as pic}
+      <div
+        class="embla__slide w-full h-[700px] overflow-y-hidden flex items-center"
+      >
+        <img src={pic.pic} class="w-full" />
+      </div>
+    {/each}
+  </div>
+</div>
+
+<style>
+  .embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+</style>
