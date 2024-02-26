@@ -1,7 +1,7 @@
 export const pics = [
-  { pic1: "neretva_gornjitok.jpg", name1: "Gornji Tok Nretve" },
-  { pic2: "Neretva-and-Buna.jpg", name2: "Neretva-and-Buna.jpg" },
-  { pic3: "neretvaDolnjiTok.webp", name3: "Neretva-and-Buna.jpg" },
-  { pic4: "neretvaUšće.jpg", name4: "Neretva-and-Buna.jpg" },
-  { pic5: "neretva_maps.png", name5: "Neretva-and-Buna.jpg" },
+  { pic: "neretva_gornjitok.jpg", name: "Gornji Tok Nretve" },
+  { pic: "Neretva-and-Buna.jpg", name: "Neretva-and-Buna.jpg" },
+  { pic: "neretvaDolnjiTok.webp", name: "Neretva-and-Buna.jpg" },
+  { pic: "neretvaUšće.jpg", name: "Neretva-and-Buna.jpg" },
+  { pic: "neretva_maps.png", name: "Neretva-and-Buna.jpg" },
 ];

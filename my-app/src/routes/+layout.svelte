@@ -20,6 +20,7 @@
               class="h-8"
               alt="NeretvaLogo"
             />
+            <!-- svelte-ignore a11y-invalid-attribute -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
@@ -67,6 +68,7 @@
         <div class="text-2xl font-semibold"><a href="/spots/">Neretva</a></div>
         <div class="flex">
           <ul class="flex flex-row gap-2 font-semibold">
+            <!-- svelte-ignore a11y-invalid-attribute -->
             <li><a href="#" >Bike</a></li>
 
             <li>Eat</li>
@@ -82,11 +84,4 @@
       </main>
     </div>
   </div>
-</div>
-<div>
-<Carousel autoplay autoplayDuration={5000} autoplayProgressVisible pauseOnFocus>
-  {#each pics as { pic, text } (pics)}
-    {pic} {text}
-  {/each}
-</Carousel>
 </div>
