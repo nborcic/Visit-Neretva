@@ -1,6 +1,10 @@
 <script>
+
+
   import "../app.css";
+  import "$lib/sampleData.ts";
   
+  import { pics } from "c:/Users/John Dou/Desktop/VS Code Portable/!Projects/Sv.kit/my-app/src/lib/carouselPics"
 </script>
 
 <div class="flex flex-col items-center h-screen bg-white">
@@ -63,7 +67,7 @@
         <div class="text-2xl font-semibold"><a href="/spots/">Neretva</a></div>
         <div class="flex">
           <ul class="flex flex-row gap-2 font-semibold">
-            <li><a href="#" on:click={() => navigateToBike()}>Bike</a></li>
+            <li><a href="#" >Bike</a></li>
 
             <li>Eat</li>
             <li>Hike</li>
@@ -78,4 +82,11 @@
       </main>
     </div>
   </div>
+</div>
+<div>
+<Carousel autoplay autoplayDuration={5000} autoplayProgressVisible pauseOnFocus>
+  {#each pics as { pic, text } (pics)}
+    {pic} {text}
+  {/each}
+</Carousel>
 </div>
