@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow w-80 p-2 font-sans "
+  class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow p-2 font-sans"
 >
   <!--each box-->
 
@@ -13,8 +13,8 @@
   <div class="flex _3_titleAndImage flex-row items-center gap-2">
     <img
       src="/Spots_images/{data.pic}"
-      alt="bikeTrail"
-      class="h-32 w-[180px]"
+      alt="bikeTrail" 
+      class="h-32 "
     />
     <div class="flex flex-col">
       <!--Discription and review rate-->
@@ -26,7 +26,7 @@
 </div>
 <div class="reviewAndRating">
   <div
-    class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible"
+    class="grid min-h-[140px] w-full place-items-center  rounded-lg p-6 lg:overflow-visible"
   >
     <div class="flex items-center gap-2 font-bold text-blue-gray-500">
       4.7
