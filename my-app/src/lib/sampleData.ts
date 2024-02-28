@@ -147,3 +147,36 @@ export const spots = [
     address: "123 Example St, City1, Country",
   },
 ];
+
+export const reviews = [
+  {
+    id: 1,
+    user: "User1",
+    rating: 5,
+    comment: "Absolutely loved it! Highly recommend."
+  },
+  {
+    id: 2,
+    user: "User2",
+    rating: 4,
+    comment: "Great experience, but room for improvement."
+  },
+  {
+    id: 3,
+    user: "User3",
+    rating: 3,
+    comment: "Average experience, was expecting more."
+  },
+  {
+    id: 4,
+    user: "User4",
+    rating: 2,
+    comment: "Below expectations in several areas."
+  },
+  {
+    id: 5,
+    user: "User5",
+    rating: 1,
+    comment: "Disappointing service, would not recommend."
+  }
+];

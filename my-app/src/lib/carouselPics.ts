@@ -5,3 +5,4 @@ export const pics = [
   { pic: "/carouselPics/neretvaUšće.jpg", name: "Neretva-and-Buna.jpg" },
   { pic: "/carouselPics/neretva_maps.png", name: "Neretva-and-Buna.jpg" },
 ];
+
