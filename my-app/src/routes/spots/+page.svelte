@@ -45,23 +45,23 @@
           <!--Discription and review rate-->
           <div class="flex text-sm">{spot.description}</div>
           <div class="flex">{spot.averageRating}</div>
-          <a href="/spots/{spot.id}">Show more</a>
+
+          <a href="/spots/{spot.id}" class="flex text-center hover:text-red"
+            >Show more</a
+          >
         </div>
       </div>
     </div>
   {/each}
 </div>
 
-<div
-  class="embla m-7"
-  use:emblaCarouselSvelte={{ options, plugins }}
-  on:emblaInit={onInit}
->
+<div class="embla m-7" use:emblaCarouselSvelte={{ options, plugins }}>
   <div class="embla__container">
     {#each pics as pic}
       <div
         class="embla__slide w-full h-[700px] overflow-y-hidden flex items-center"
       >
+        <!-- svelte-ignore a11y-missing-attribute -->
         <img src={pic.pic} class="w-full" />
       </div>
     {/each}
@@ -80,15 +80,19 @@
         class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
       >
         <li>
+          <!-- svelte-ignore a11y-invalid-attribute -->
           <a href="#" class="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
+          <!-- svelte-ignore a11y-invalid-attribute -->
           <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
         <li>
+          <!-- svelte-ignore a11y-invalid-attribute -->
           <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
         </li>
         <li>
+          <!-- svelte-ignore a11y-invalid-attribute -->
           <a href="#" class="hover:underline">Contact</a>
         </li>
       </ul>
