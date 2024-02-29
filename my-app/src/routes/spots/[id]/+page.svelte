@@ -8,25 +8,49 @@
   <!--each box-->
 
   <div class="flex _title">
-    <p class="flex">{data.name}</p>
+    <p class="flex font-extrabold text-xl">{data.name}</p>
   </div>
-  <div class="flex _3_titleAndImage flex-row items-center gap-2">
-    <img
-      src="/Spots_images/{data.pic}"
-      alt="bikeTrail" 
-      class="h-32 "
-    />
+  <div class="flex _3_titleAndImage flex-row items-center gap-3">
+    <img src="/Spots_images/{data.pic}" alt="bikeTrail" class="h-32" />
     <div class="flex flex-col">
       <!--Discription and review rate-->
-      <div class="flex text-sm">{data.description}</div>
-      <div class="flex">{data.averageRating}</div>
-      <a href="/spots/">Home</a>
+      <div class="flex text-sm font-serif font-bolder">
+        {data.longDescription}
+      </div>
+      <div class="flex font-serif font-bolder">
+        Average Rating: {data.averageRating}
+      </div>
+      <a href="/spots/" class="font-serif font-bolder"> Home</a>
     </div>
   </div>
 </div>
+<!-- 3 columns containing item deatails under picture-->
+<div class="flex h-56 w-full gap-3 shadow-md border rounded-sm">
+  <div
+    class="devides_first flex flex-col border-black w-full p-3 border rounded-sm"
+  >
+    <div>
+      <h3>Ratings and reviews</h3>
+      <div></div>
+    </div>
+  </div>
+  <div class="devides_second flex flex-col border border-black w-full">
+    <div>
+      <h3>Ratings and reviews</h3>
+      <div></div>
+    </div>
+  </div>
+  <div class="devides_third flex flex-col border border-black w-full">
+    <div>
+      <h3>Ratings and reviews</h3>
+      <div></div>
+    </div>
+  </div>
+</div>
+
 <div class="reviewAndRating">
   <div
-    class="grid min-h-[140px] w-full place-items-center  rounded-lg p-6 lg:overflow-visible"
+    class="grid min-h-[140px] w-full place-items-center rounded-lg p-6 lg:overflow-visible"
   >
     <div class="flex items-center gap-2 font-bold text-blue-gray-500">
       4.7
