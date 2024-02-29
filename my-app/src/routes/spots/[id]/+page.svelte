@@ -1,4 +1,5 @@
 <script>
+
   export let data;
 </script>
 
@@ -10,42 +11,83 @@
   <div class="flex _title">
     <p class="flex font-extrabold text-xl">{data.name}</p>
   </div>
-  <div class="flex _3_titleAndImage flex-row items-center gap-3">
-    <img src="/Spots_images/{data.pic}" alt="bikeTrail" class="h-32" />
+  <div
+    class="flex _3_titleAndImage flex-row items-center gap-3 border  transition"
+  >
+    <img
+      src="/Spots_images/{data.pic}"
+      alt="bikeTrail"
+      class="h-52 flex transition ease-in-out hover:scale-105"
+    />
     <div class="flex flex-col">
       <!--Discription and review rate-->
-      <div class="flex text-sm font-serif font-bolder">
+      <div class="flex text-sm font-serif font-bolder gap-5">
         {data.longDescription}
       </div>
-      <div class="flex font-serif font-bolder">
-        Average Rating: {data.averageRating}
+      <div class="flex font-serif font-bolder gap-2">
+        Average Spot Rating: {data.averageRating}
       </div>
       <a href="/spots/" class="font-serif font-bolder"> Home</a>
     </div>
   </div>
 </div>
 <!-- 3 columns containing item deatails under picture-->
-<div class="flex h-56 w-full gap-3 shadow-md border rounded-sm">
+<div class="flex h-64 w-full gap-5 shadow-md border shrink  justify-between">
   <div
-    class="devides_first flex flex-col border-black w-full p-3 border rounded-sm"
+    class="devides_first flex flex-col w-full p-3 border rounded-sm justify-between"
   >
-    <div>
-      <h3>Ratings and reviews</h3>
-      <div></div>
+    <div class="font-semibold">
+      <h3>
+        Ratings and reviews
+        {data.averageRating}
+        {data.website}
+      </h3>
+    </div>
+    {data.price}-{data.type}
+    <div class="items-center">{data.phoneNumber}
+    {data.address}
+    
+
     </div>
   </div>
-  <div class="devides_second flex flex-col border border-black w-full">
+  <div
+    class="devides_second flex flex-col  w-full p-3 border rounded-sm justify-between"
+  >
+    <div class="font-semibold">
+      <h3>
+        Ratings and reviews
+        {data.averageRating}
+        {data.website}
+      </h3>
+    </div>
     <div>
-      <h3>Ratings and reviews</h3>
-      <div></div>
+
+  {data.price}-{data.type}
+  <div class="items-center">{data.phoneNumber}</div>
+  {data.address}
+
+      
     </div>
   </div>
-  <div class="devides_third flex flex-col border border-black w-full">
-    <div>
-      <h3>Ratings and reviews</h3>
-      <div></div>
-    </div>
+  <div
+    class="devides_third flex flex-col w-full p-3 border rounded-sm justify-between"
+  >
+  <div class="font-semibold">
+    <h3>
+      Ratings and reviews
+      {data.averageRating}
+      {data.website}
+    </h3>
   </div>
+  <div>
+
+{data.price}-{data.type}
+<div class="items-center">{data.phoneNumber}</div>
+{data.address}
+
+    
+  </div>
+</div>
 </div>
 
 <div class="reviewAndRating">
