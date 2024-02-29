@@ -14,7 +14,7 @@
           <div class="flex gap-3 items-center">
             <img
               src="/Spots_images/spotslogo.jpeg"
-              class="h-8"
+              class="h-8 rounded-sm"
               alt="NeretvaLogo"
             />
             <!-- svelte-ignore a11y-invalid-attribute -->

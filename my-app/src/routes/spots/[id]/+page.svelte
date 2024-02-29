@@ -1,5 +1,4 @@
 <script>
-
   export let data;
 </script>
 
@@ -12,7 +11,7 @@
     <p class="flex font-extrabold text-xl">{data.name}</p>
   </div>
   <div
-    class="flex _3_titleAndImage flex-row items-center gap-3 border  transition"
+    class="flex _3_titleAndImage flex-row items-center gap-3 border transition bg-blue-100"
   >
     <img
       src="/Spots_images/{data.pic}"
@@ -32,9 +31,31 @@
   </div>
 </div>
 <!-- 3 columns containing item deatails under picture-->
-<div class="flex h-64 w-full gap-5 shadow-md border shrink  justify-between">
+<div class="flex h-64 w-full gap-5 shadow-md border shrink justify-between">
   <div
     class="devides_first flex flex-col w-full p-3 border rounded-sm justify-between"
+  >
+    <div class="font-semibold flex flex-col  border-b-2 p-2 gap-2">
+      <h3>
+        <div>
+        Ratings and reviews {data.averageRating}
+      </div>
+        
+      <div>
+        {data.website}
+      </div>
+      </h3>
+    </div>
+    <div class="flex p-2 gap-2">
+    {data.price}-{data.type}
+    </div>
+    <div class="items-center p-2 gap-2 border-t-2">
+      <div>{data.phoneNumber}</div>
+      {data.address}
+    </div>
+  </div>
+  <div
+    class="devides_second flex flex-col w-full p-3 border rounded-sm justify-between"
   >
     <div class="font-semibold">
       <h3>
@@ -43,15 +64,14 @@
         {data.website}
       </h3>
     </div>
-    {data.price}-{data.type}
-    <div class="items-center">{data.phoneNumber}
-    {data.address}
-    
-
+    <div class="flex">
+      {data.price}-{data.type}
+      <div class="items-center">{data.phoneNumber}</div>
+      {data.address}
     </div>
   </div>
   <div
-    class="devides_second flex flex-col  w-full p-3 border rounded-sm justify-between"
+    class="devides_third flex flex-col w-full p-3 border rounded-sm justify-between"
   >
     <div class="font-semibold">
       <h3>
@@ -61,33 +81,11 @@
       </h3>
     </div>
     <div>
-
-  {data.price}-{data.type}
-  <div class="items-center">{data.phoneNumber}</div>
-  {data.address}
-
-      
+      {data.price}-{data.type}
+      <div class="items-center">{data.phoneNumber}</div>
+      {data.address}
     </div>
   </div>
-  <div
-    class="devides_third flex flex-col w-full p-3 border rounded-sm justify-between"
-  >
-  <div class="font-semibold">
-    <h3>
-      Ratings and reviews
-      {data.averageRating}
-      {data.website}
-    </h3>
-  </div>
-  <div>
-
-{data.price}-{data.type}
-<div class="items-center">{data.phoneNumber}</div>
-{data.address}
-
-    
-  </div>
-</div>
 </div>
 
 <div class="reviewAndRating">

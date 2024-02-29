@@ -31,7 +31,7 @@ export const spots = [
     description: "Challenging vertical climbs for all skill levels.",
     longDescription: "Engage in the ultimate rock climbing adventure. Our camp offers routes for beginners to advanced climbers, focusing on safety, technique, and fun.",
     averageRating: 4.8,
-    pic: "rock climbing school.jpg",
+    pic: "rock clymbing school.jpg",
     id: 2,
     price: "$110.00",
     address: "Placeholder for address",
