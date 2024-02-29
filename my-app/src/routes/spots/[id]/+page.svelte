@@ -8,7 +8,7 @@
   <!--each box-->
 
   <div class="flex _title">
-    <p class="flex font-extrabold text-xl">{data.name}</p>
+    <p class="flex font-extrabold text-2xl">{data.name}</p>
   </div>
   <div
     class="flex _3_titleAndImage flex-row items-center gap-3 border transition bg-blue-100"
@@ -35,19 +35,19 @@
   <div
     class="devides_first flex flex-col w-full p-3 border rounded-sm justify-between"
   >
-    <div class="font-semibold flex flex-col  border-b-2 p-2 gap-2">
+    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
         <div>
-        Ratings and reviews {data.averageRating}
-      </div>
-        
-      <div>
-        {data.website}
-      </div>
+          Ratings and reviews {data.averageRating}
+        </div>
+
+        <div>
+          {data.website}
+        </div>
       </h3>
     </div>
     <div class="flex p-2 gap-2">
-    {data.price}-{data.type}
+      {data.price}-{data.type}
     </div>
     <div class="items-center p-2 gap-2 border-t-2">
       <div>{data.phoneNumber}</div>
@@ -57,32 +57,44 @@
   <div
     class="devides_second flex flex-col w-full p-3 border rounded-sm justify-between"
   >
-    <div class="font-semibold">
+    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
-        Ratings and reviews
-        {data.averageRating}
-        {data.website}
+        <div>
+          Ratings and reviews {data.averageRating}
+        </div>
+
+        <div>
+          {data.website}
+        </div>
       </h3>
     </div>
-    <div class="flex">
+    <div class="flex p-2 gap-2">
       {data.price}-{data.type}
-      <div class="items-center">{data.phoneNumber}</div>
+    </div>
+    <div class="items-center p-2 gap-2 border-t-2">
+      <div>{data.phoneNumber}</div>
       {data.address}
     </div>
   </div>
   <div
     class="devides_third flex flex-col w-full p-3 border rounded-sm justify-between"
   >
-    <div class="font-semibold">
+    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
-        Ratings and reviews
-        {data.averageRating}
-        {data.website}
+        <div>
+          Ratings and reviews {data.averageRating}
+        </div>
+
+        <div>
+          {data.website}
+        </div>
       </h3>
     </div>
-    <div>
+    <div class="flex p-2 gap-2">
       {data.price}-{data.type}
-      <div class="items-center">{data.phoneNumber}</div>
+    </div>
+    <div class="items-center p-2 gap-2 border-t-2">
+      <div>{data.phoneNumber}</div>
       {data.address}
     </div>
   </div>
