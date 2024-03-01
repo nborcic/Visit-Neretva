@@ -1,9 +1,7 @@
 <script lang="ts">
-  function showName(event: InputEvent) {
-    console.log(event, "13rm");
-    const { value } = event;
-    const text = value;
-    console.log("text");
+  let inputValue = "";
+  function handleButtonClick() {
+    console.log("sadasd");
   }
 </script>
 
@@ -40,7 +38,7 @@
             <button
               type="submit"
               id="btn"
-              on:click={showName}
+              on:click={handleButtonClick}
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >Search</button
             >
