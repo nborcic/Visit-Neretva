@@ -18,7 +18,7 @@
     goto(`/spots/${spotsid}`);
   }
   let options = { loop: true };
-  let plugins = [Autoplay(400)];
+  let plugins = [Autoplay(300)];
 </script>
 
 <div class="flex flex-wrap _1 gap-7 justify-center">
@@ -39,7 +39,7 @@
         <img
           src="/Spots_images/{spot.pic}"
           alt="bikeTrail"
-          class="h-32 w-[180px]"
+          class="h-32 w-[180px] rounded-sm"
         />
         <div class="flex flex-col">
           <!--Discription and review rate-->
