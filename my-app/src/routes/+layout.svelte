@@ -1,8 +1,19 @@
-<script>
+<script lang="ts">
   import "../app.css";
   import "$lib/sampleData.ts";
   import "../app.css";
- 
+  import { spots } from "$lib/sampleData";
+  let inputValue = "";
+  let searchResults: string | any[] = [];
+
+  export function handleButtonClick() {
+    searchResults = spots.filter((spot) =>
+      spot.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    goto("/results", { state: { searchResults } });
+  }
+
+  import { goto } from "$app/navigation";
 </script>
 
 <div class="flex flex-col items-center h-screen bg-white">
@@ -28,9 +39,9 @@
           </div>
           <div class="flex items-center gap-4">
             <input
-              type="input"
+              type="text"
               id="input"
-              
+              bind:value={inputValue}
               class="block p-4 pl-10 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Explore Neretva"
               required
@@ -38,7 +49,7 @@
             <button
               type="submit"
               id="btn"
-             
+              on:click={handleButtonClick}
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >Search</button
             >
