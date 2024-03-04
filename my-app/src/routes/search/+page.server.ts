@@ -5,5 +5,7 @@ export async function load({ params, url }) {
   const results = spots.filter((spot) =>
     spot.name.toLowerCase().includes(q.toLowerCase())
   );
-  return {spots:results}
+  
+  
+  return { spots: results};
 }

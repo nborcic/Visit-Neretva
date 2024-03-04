@@ -38,7 +38,7 @@
       <div class="flex _3_titleAndImage flex-row items-center gap-2">
         <img
           src="/Spots_images/{spot.pic}"
-          alt="bikeTrail"
+          alt=""
           class="h-32 w-[180px] rounded-sm"
         />
         <div class="flex flex-col">

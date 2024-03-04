@@ -3,7 +3,7 @@
   import "$lib/sampleData.ts";
   import "../app.css";
   import { spots } from "$lib/sampleData";
-  import { searchResultsStore } from "$lib/stores";
+  
   let inputValue = "";
   let searchResults = [];
 
