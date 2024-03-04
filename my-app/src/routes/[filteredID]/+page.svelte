@@ -1,24 +1,42 @@
-<script context="module">
-  // @ts-ignore
-  export async function load({ data }) {
-    // You can access the passed state like this:
-    return {
-      props: {
-        searchResults: data.data || [],
-      },
-    };
+<script>
+  import { searchResultsStore } from "$lib/stores";
+  import { goto } from "$app/navigation";
+  import { spots } from "$lib/sampleData";
+  import { LOGONSERVER } from "$env/static/private";
+  let inputValue = "";
+
+  function handleButtonClick() {
+    const results = spots.filter((spot) =>
+      spot.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    searchResultsStore.set(results);
+    goto("/results");
   }
   /**
-   * @type {any[]}
+   * @type {string | any[]}
    */
-  export let searchResults = [];
+  let searchResults = [];
+  searchResultsStore.subscribe((value) => {
+    searchResults = value;
+  });
 </script>
 
-<!-- Now use filteredSpots to display your data -->
-{#each searchResults as spot}
-  <div class="spot">
-    <h2>{spot.name}</h2>
-    <!-- ... display other properties of 'spot' as needed -->
-    
+{#if searchResults.length > 0}
+
+  <div class="search-results">
+    {#each searchResults as spot}
+      <div class="outer_box right_box border border-black">
+        <div class="left_box flex border border-black">
+          
+        </div>
+        <div class="right_box border border-black">
+          <div class="upper_one right_box border border-black">`$: {searchResults}`</div>
+          <div class="down_one right_box border border-black"></div>
+        </div>
+      </div>
+    {/each}
   </div>
-{/each}
+{:else}
+  <p>No results found.</p>
+{/if}
+<slot />
