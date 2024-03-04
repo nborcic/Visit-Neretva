@@ -1,7 +1,5 @@
 <script lang="ts">
-  export let data;
-
-  import "$lib/sampleData.ts";
+ 
 </script>
 
 <div class="flex flex-col items-center h-screen bg-white">

@@ -1,20 +1,16 @@
-<script lang="ts">
+<script lang="js">
   import "../app.css";
   import "$lib/sampleData.ts";
   import "../app.css";
   import { spots } from "$lib/sampleData";
   import { searchResultsStore } from "$lib/stores";
   let inputValue = "";
-  let searchResults: string | any[] = [];
+  let searchResults = [];
 
   function handleButtonClick() {
-    const results = spots.filter((spot) =>
-      spot.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    searchResultsStore.set(results);
-    goto("/results");
+    goto("/search?q="+inputValue);
   }
-
+  
   import { goto } from "$app/navigation";
 </script>
 
@@ -46,7 +42,7 @@
               bind:value={inputValue}
               class="block p-4 pl-10 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Explore Neretva"
-              required 
+              required
             />
             <button
               type="submit"

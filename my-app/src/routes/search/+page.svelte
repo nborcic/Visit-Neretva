@@ -2,15 +2,12 @@
   import { searchResultsStore } from "$lib/stores";
   import { goto } from "$app/navigation";
   import { spots } from "$lib/sampleData";
-  import { LOGONSERVER } from "$env/static/private";
+  import database from "svelte-awesome/icons/database";
+  export let data;
   let inputValue = "";
 
   function handleButtonClick() {
-    const results = spots.filter((spot) =>
-      spot.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
     searchResultsStore.set(results);
-    goto("/results");
   }
   /**
    * @type {string | any[]}
@@ -22,15 +19,12 @@
 </script>
 
 {#if searchResults.length > 0}
-
   <div class="search-results">
     {#each searchResults as spot}
       <div class="outer_box right_box border border-black">
-        <div class="left_box flex border border-black">
-          
-        </div>
+        <div class="left_box flex border border-black"></div>
         <div class="right_box border border-black">
-          <div class="upper_one right_box border border-black">`$: {searchResults}`</div>
+          <div class="upper_one right_box border border-black">{spot.name}</div>
           <div class="down_one right_box border border-black"></div>
         </div>
       </div>
