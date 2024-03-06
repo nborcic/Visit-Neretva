@@ -13,7 +13,7 @@ export const spots = [
     phoneNumber: "Placeholder for phone number",
   },
   {
-    name: "Surf school",
+    name: "Sea Surf school",
     type: "Activity",
     description: "Place to learn and enjoy surfing.",
     longDescription: "A premier destination for aspiring surfers of all ages. Learn the basics or hone your skills with experienced instructors in a fun and supportive environment.",
@@ -26,7 +26,7 @@ export const spots = [
     phoneNumber: "Placeholder for phone number",
   },
   {
-    name: "Rock Climbing Camp",
+    name: "High/Low Skill Rock Climbing Camp",
     type: "Activity",
     description: "Challenging vertical climbs for all skill levels.",
     longDescription: "Engage in the ultimate rock climbing adventure. Our camp offers routes for beginners to advanced climbers, focusing on safety, technique, and fun.",
@@ -39,7 +39,7 @@ export const spots = [
     phoneNumber: "Placeholder for phone number",
   },
   {
-    name: "Kayak Adventures",
+    name: "Sea Kayak Adventures",
     type: "Activity",
     description: "Explore rivers and coastlines with guided kayak tours.",
     longDescription: "Discover the beauty of nature through our guided kayak tours. Explore serene rivers, rugged coastlines, and get up close with local wildlife in their natural habitat.",
@@ -78,7 +78,7 @@ export const spots = [
     phoneNumber: "Placeholder for phone number",
   },
   {
-    name: "Skydiving Thrill",
+    name: "Skydiving Skyhigh Thrill",
     type: "Activity",
     description: "Skydive with experienced instructors for an adrenaline rush.",
     longDescription: "Take the leap and experience the thrill of skydiving. Our certified instructors will guide you through every step, ensuring a safe and exhilarating jump.",
@@ -91,7 +91,7 @@ export const spots = [
     phoneNumber: "Placeholder for phone number",
   },
   {
-    name: "Sailing School",
+    name: "Sea Sailing School",
     type: "Activity",
     description: "Learn to sail in the open sea with certified instructors.",
     longDescription: "Embark on a sailing adventure with our certified sailing school. Learn navigation, boat handling, and safety on the open sea, guided by experienced sailors.",
@@ -117,7 +117,7 @@ export const spots = [
     phoneNumber: "+321-654-98704",
   },
   {
-    name: "Scuba Diving Discovery",
+    name: "Sea Scuba Diving Discovery",
     type: "Activity",
     description: "Explore underwater worlds and marine life.",
     longDescription: "Dive into the ocean's depths with our scuba diving discovery program. Explore coral reefs, encounter marine life, and uncover the mysteries of the underwater world.",

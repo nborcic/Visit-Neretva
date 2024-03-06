@@ -10,7 +10,16 @@
   function handleButtonClick() {
     goto("/search?q=" + inputValue);
   }
-
+  function handleButtonClickSea() {
+    goto("/search?q=sea");
+  }
+  function handleButtonClickClimb() {
+    goto("/search?q=climb");
+  }
+  function handleButtonClickHights() {
+    goto("/search?q=high");
+  }
+  
   import { goto } from "$app/navigation";
 </script>
 
@@ -56,7 +65,7 @@
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:texSt-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-dropdown"
             aria-expanded="false"
           >
@@ -64,15 +73,16 @@
         </div>
         <!-- Additional navigation and dropdowns -->
       </div>
-      <div class="flex text-2xl gap-3 px-2">
-        <div>
+      <div class="flex text-2xl gap-5 px-1">
+        <div class="flex ">
+          <div class=""></div>
           <a
             href="https://www.google.com/maps/@43.025144,17.5368241,12.67z/data=!5m2!1e2!1e4?entry=ttu"
             target="_blank"
             ><img
               src="/Spots_images/mapIcon.jpg"
               alt="mapLogo"
-              class=" h-6 w-6"
+              class="h-6 w-6"
             /></a
           >
         </div>
@@ -80,11 +90,11 @@
         <div class="flex">
           <ul class="flex flex-row gap-2 font-semibold">
             <!-- svelte-ignore a11y-invalid-attribute -->
-            <li><a href="#">Bike</a></li>
+            <li><button on:click={handleButtonClick}>Bike</button></li>
 
-            <li>Eat</li>
-            <li>Hike</li>
-            <li>Skydiving</li>
+            <li><button on:click={handleButtonClickSea}>Sea</button></li>
+            <li><button on:click={handleButtonClickClimb}>Climb</li>
+              <li><button on:click={handleButtonClickHights}>Heights</li>
           </ul>
         </div>
       </div>
