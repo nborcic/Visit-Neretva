@@ -3,14 +3,14 @@
   import "$lib/sampleData.ts";
   import "../app.css";
   import { spots } from "$lib/sampleData";
-  
+
   let inputValue = "";
   let searchResults = [];
 
   function handleButtonClick() {
-    goto("/search?q="+inputValue);
+    goto("/search?q=" + inputValue);
   }
-  
+
   import { goto } from "$app/navigation";
 </script>
 
@@ -47,6 +47,7 @@
             <button
               type="submit"
               id="btn"
+              disabled={!inputValue}
               on:click={handleButtonClick}
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >Search</button

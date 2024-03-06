@@ -1,13 +1,15 @@
-<script lang="ts">
+<script>
  
 </script>
 
-<div class="flex flex-col items-center h-screen bg-white">
-  <div class="max-w-[1280px] gap-4 flex flex-col">
-    <div class="flex flex-col justify-center items-center bg-gray-100">
-      <main class="w-full p-4">
+<div class="">
+<div class="">
+  <div class="">
+    <div class="">
+      <main class="">
         <slot />
       </main>
     </div>
   </div>
+</div>
 </div>
