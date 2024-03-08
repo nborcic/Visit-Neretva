@@ -1,4 +1,6 @@
 <script lang="js">
+  // @ts-nocheck
+
   import "../app.css";
   import "$lib/sampleData.ts";
   import "../app.css";
@@ -18,6 +20,9 @@
   }
   function handleButtonClickHights() {
     goto("/search?q=high");
+  }
+  function handleButtonClickstart() {
+    goto("/startAuth");
   }
 
   import { goto } from "$app/navigation";
@@ -62,7 +67,6 @@
               >Search</button
             >
           </div>
-          
         </div>
         <!-- Additional navigation and dropdowns -->
       </div>
@@ -81,11 +85,16 @@
         </div>
         <div class="text-2xl font-semibold"><a href="/spots/">Neretva</a></div>
         <div class="flex">
-          <ul class="flex flex-row gap-2 font-semibold">
+          <ul class="flex gap-2 font-semibold">
             <li><button on:click={handleButtonClick}>Bike</button></li>
             <li><button on:click={handleButtonClickSea}>Sea</button></li>
             <li><button on:click={handleButtonClickClimb}>Climb</button></li>
             <li><button on:click={handleButtonClickHights}>Heights</button></li>
+          </ul>
+          <ul class="flex font-semibold flex-shrink">
+            <li>
+              <button on:click={handleButtonClickstart}>Log In/Sign In</button>
+            </li>
           </ul>
         </div>
       </div>
