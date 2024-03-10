@@ -104,15 +104,24 @@
   <div
     class="grid min-h-[140px] w-full place-items-center rounded-lg p-6 lg:overflow-visible"
   >
-    <div class="flex items-center gap-2 font-bold text-blue-gray-500">
-      <div class="inline-flex items-center"></div>
+    <div class="flex items-center gap-6 font-bold text-blue-gray-500">
+      <div class="inline-flex items-center flex-col gap-1">
+        <h3 class="flex">Rate this place!</h3>
+        <div class="bodyOne">
+          <div class="rating text-amber-500">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </div>
+        </div>
+      </div>
       <p
         class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
       ></p>
       <div>
-        <!-- Directly map averageRating to visual stars without using stars array, as it seems unnecessary -->
         {#if data.averageRating}
-          <span class=" flex star text-xl">
+          <div class="flex">
+            <div>{data.averageRating} Stars based on {data.numRating} Reviews</div>
+          </div>
+          <span class="flex star text-xl">
             {#each { length: 5 } as star, index}
               {#if index < data.averageRating}
                 <div class="text-yellow-400 text-4xl">★</div>
@@ -121,7 +130,6 @@
               {/if}
             {/each}
           </span>
-          <div>{data.averageRating} Based on {data.numRating} Reviews</div>
         {:else}
           <p>No rating available.</p>
         {/if}
@@ -129,3 +137,31 @@
     </div>
   </div>
 </div>
+
+<style>
+  .bodyOne {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 36px; 
+  }
+
+  .rating > span {
+    width: 1.1em;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .rating > span:hover:before,
+  .rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    font-size: 36px; 
+  }
+</style>

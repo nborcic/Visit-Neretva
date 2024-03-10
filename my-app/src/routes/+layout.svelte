@@ -83,19 +83,36 @@
             /></a
           >
         </div>
-        <div class="text-2xl font-semibold"><a href="/spots/">Neretva</a></div>
-        <div class="flex">
-          <ul class="flex gap-2 font-semibold">
-            <li><button on:click={handleButtonClick}>Bike</button></li>
-            <li><button on:click={handleButtonClickSea}>Sea</button></li>
-            <li><button on:click={handleButtonClickClimb}>Climb</button></li>
-            <li><button on:click={handleButtonClickHights}>Heights</button></li>
-          </ul>
-          <ul class="flex font-semibold flex-shrink">
-            <li>
-              <button on:click={handleButtonClickstart}>Log In/Sign In</button>
-            </li>
-          </ul>
+        <div class="text-2xl font-semibold px-4 text-green-500">
+          <a href="/spots/">Neretva</a>
+        </div>
+        <div class="flex flex-auto">
+          <div class="flex gap-2 font-semibold">
+            <button
+              class=" bg-white px-4 text-blue-700"
+              on:click={handleButtonClick}>Bike</button
+            >
+            <button
+              class=" bg-white px-4 text-blue-700"
+              on:click={handleButtonClickSea}>Sea</button
+            >
+            <button
+              class=" bg-white px-4 text-blue-700"
+              on:click={handleButtonClickClimb}>Climb</button
+            >
+            <button
+              class=" bg-white px-4 text-blue-700"
+              on:click={handleButtonClickHights}>Heights</button
+            >
+          </div>
+        </div>
+        <div>
+          <div class="flex font-semibold">
+            <button
+              class="flex font-semibold bg-white border-l-2 border-b-2 border-blue-200 px-4 text-blue-700 shadow-sm rounded-sm"
+              on:click={handleButtonClickstart}>Log In/Sign In</button
+            >
+          </div>
         </div>
       </div>
     </header>
@@ -106,3 +123,5 @@
     </div>
   </div>
 </div>
+
+
