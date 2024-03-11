@@ -1,6 +1,5 @@
 <script lang="js">
-  // @ts-nocheck
-
+  
   import "../app.css";
   import "$lib/sampleData.ts";
   import "../app.css";
@@ -118,6 +117,7 @@
     </header>
     <div class="flex flex-col justify-center items-center bg-gray-100">
       <main class="w-full p-4">
+        <alert />
         <slot />
       </main>
     </div>

@@ -27,6 +27,7 @@
 	"dependencies": {
 		"embla-carousel-autoplay": "^8.0.0",
 		"embla-carousel-svelte": "^8.0.0",
+		"optkit": "^0.1.6",
 		"svelte-awesome": "^3.3.1"
 	}
 }
