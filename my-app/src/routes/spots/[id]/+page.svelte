@@ -1,7 +1,12 @@
 <script lang="ts">
+  import { Input } from "postcss";
+  import { stars } from "$lib/stars.js";
   import { onMount } from "svelte";
+  import idBadge from "svelte-awesome/icons/idBadge";
   import Swal from "sweetalert2";
+  import { writable } from "svelte/store";
   export let data;
+
   export function starOne() {
     console.log(starOne);
   }
@@ -14,25 +19,24 @@
   export function starFour() {
     console.log(starFour);
   }
-  export function starFive() {
-    console.log(starFive);
-  }
+  export function starFive() {}
+
   export function submitStar() {
     console.log("submitStar");
   }
 
-  function subPressed() {
-    
-   Swal.fire({
-      position: "top-end",
+  let selectedRating = writable(0);
+
+  // Function to update the selected rating and show the alert
+  function selectRating(rating) {
+    selectedRating.set(rating);
+    Swal.fire({
       icon: "success",
-      title: "Thanks!",
+      title: `Thanks for ${rating} stars!`,
       showConfirmButton: false,
       timer: 1500,
     });
   }
-
-
 </script>
 
 <div
@@ -138,84 +142,82 @@
     class="grid min-h-[140px] w-full place-items-center rounded-lg p-6 lg:overflow-visible"
   >
     <div class="flex items-center gap-6 font-bold text-blue-gray-500">
-      <div class="inline-flex items-center flex-col gap-1">
-        <h3 class="flex">Rate this place!</h3>
+      <div class="inline-flex items-center gap-1">
         <div class="bodyOne flex">
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <div class="rating text-amber-500">
-            <span id="star5" on:click={starFive}>☆</span><span
-              on:click={starFour}
-              id="star4">☆</span
-            ><span on:click={starThree} id="star3">☆</span><span
-              on:click={starTwo}
-              id="star2">☆</span
-            ><span on:click={starOne} id="star1">☆</span>
-          </div>
-          <div class="flex flex-col">
-            <button
-              id="submitStar"
-              on:click={subPressed}
-              type="submit"
-              class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-6 border border-blue-500 hover:border-transparent rounded"
-              >Rate</button
-            >
+          <div class="rating">
+            {#each Array(5) as _, i (5 - i)}
+              <input
+                type="radio"
+                id={`star${5 - i}`}
+                bind:group={$selectedRating}
+                value={5 - i}
+                on:change={() => selectRating(5 - i)}
+              />
+              <label for={`star${5 - i}`}>★</label>
+            {/each}
+
+            <!-- <span class="flex star text-xl">
+              <button on:click={starOne}>★</button>
+              <button on:click={starTwo}>★</button>
+              <button on:click={starThree}>★</button>
+              <button on:click={starFour}>★</button>
+              <button on:click={starFive}>★</button>
+              <button on:click={submitRating} type="submit">Rate</button>
+            </span> -->
           </div>
         </div>
-      </div>
-      <p
-        class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
-      ></p>
-      <div>
-        {#if data.averageRating}
-          <div class="flex">
-            <div>
-              {data.averageRating} Stars based on {data.numRating} Reviews
+        <p
+          class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
+        >
+          |
+        </p>
+        <div>
+          {#if data.averageRating}
+            <div class="flex">
+              <div>
+                {data.averageRating} Stars quality rating from {data.numRating} Reviews
+              </div>
             </div>
-          </div>
-          <span class="flex star text-xl">
-            {#each { length: 5 } as star, index}
-              {#if index < data.averageRating}
-                <div class="text-yellow-400 text-4xl">★</div>
-              {:else}
-                <div class="text-grey-950 text-4xl">☆</div>
-              {/if}
-            {/each}
-          </span>
-        {:else}
-          <p>No rating available.</p>
-        {/if}
+            <span class="flex star text-xl cursor-none">
+              {#each { length: 5 } as star, index}
+                {#if index < data.averageRating}
+                  <div class="text-yellow-400 text-4xl">★</div>
+                {:else}
+                  <div class="text-grey-950 text-4xl">☆</div>
+                {/if}
+              {/each}
+            </span>
+          {:else}
+            <p>No rating available.</p>
+          {/if}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .bodyOne {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    font-size: 36px;
-  }
-
-  .rating > span {
-    width: 1.1em;
-    position: relative;
-    display: inline-block;
+  .star {
     cursor: pointer;
   }
-
-  .rating > span:hover:before,
-  .rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
-    font-size: 36px;
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: row-reverse;
   }
+  .rating input {
+    display: none;
+  }
+  .rating label {
+    font-size: 30px;
+    color: grey;
+  }
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: orange;
+  } /* Hover effect */
+  .rating input:checked ~ label {
+    color: orange;
+  } /* Filled effect */
 </style>
