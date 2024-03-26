@@ -1,42 +1,35 @@
 <script lang="ts">
-  import { Input } from "postcss";
-  import { stars } from "$lib/stars.js";
-  import { onMount } from "svelte";
-  import idBadge from "svelte-awesome/icons/idBadge";
-  import Swal from "sweetalert2";
+  import { spots } from "$lib/sampleData";
   import { writable } from "svelte/store";
+  import Swal from "sweetalert2";
+
   export let data;
 
-  export function starOne() {
-    console.log(starOne);
-  }
-  export function starTwo() {
-    console.log(starTwo);
-  }
-  export function starThree() {
-    console.log(starThree);
-  }
-  export function starFour() {
-    console.log(starFour);
-  }
-  export function starFive() {}
-
-  export function submitStar() {
-    console.log("submitStar");
-  }
-
-  let selectedRating = writable(0);
-
-  // Function to update the selected rating and show the alert
-  function selectRating(rating) {
-    selectedRating.set(rating);
+  async function selectRating(newRating: number) {
+    
     Swal.fire({
       icon: "success",
-      title: `Thanks for ${rating} stars!`,
+      title: `Thanks for ${newRating} stars!`,
       showConfirmButton: false,
       timer: 1500,
     });
+
+    
+    const newNumRating = data.numRating + 1;
+
+    
+    const totalRatingSum = data.averageRating * data.numRating + newRating;
+    const newAverageRating = totalRatingSum / newNumRating;
+
+    // Update your data object and selectedRating if necessary
+    data.numRating = newNumRating;
+    data.averageRating = newAverageRating;
+
+    // Assuming $selectedRating is a writable store you're using to track the selected rating
+    // Update it or perform necessary actions here, depending on your application's needs
   }
+
+  let selectedRating = writable(0);
 </script>
 
 <div
@@ -155,15 +148,6 @@
               />
               <label for={`star${5 - i}`}>★</label>
             {/each}
-
-            <!-- <span class="flex star text-xl">
-              <button on:click={starOne}>★</button>
-              <button on:click={starTwo}>★</button>
-              <button on:click={starThree}>★</button>
-              <button on:click={starFour}>★</button>
-              <button on:click={starFive}>★</button>
-              <button on:click={submitRating} type="submit">Rate</button>
-            </span> -->
           </div>
         </div>
         <p
