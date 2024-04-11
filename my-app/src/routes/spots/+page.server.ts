@@ -1,4 +1,13 @@
 import { spots } from "$lib/sampleData";
+import { promises as fs } from "fs";
 export async function load({ params }) {
-  return { spots };
+  const filePath = "static/sampleData.json";
+ 
+  // await fs.writeFile(filePath, JSON.stringify(spots, null, 2), "utf8"); // undo to reset sampleData file
+
+  const data = JSON.parse(await fs.readFile(filePath, "utf8"));
+  
+  
+  
+  return { spots: data };
 }

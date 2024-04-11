@@ -1,12 +1,19 @@
 <script lang="ts">
+  
   import { spots } from "$lib/sampleData";
-  import { writable } from "svelte/store";
+  import { writable, get } from "svelte/store";
   import Swal from "sweetalert2";
 
-  export let data;
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
+
+  let name = "";
 
   async function selectRating(newRating: number) {
-    
+    ratingForm.submit();
+    // rateItem(data.id, newRating);
+
     Swal.fire({
       icon: "success",
       title: `Thanks for ${newRating} stars!`,
@@ -14,22 +21,40 @@
       timer: 1500,
     });
 
-    
-    const newNumRating = data.numRating + 1;
+    const newNumRating = Number(data.numRating) + 1;
 
-    
     const totalRatingSum = data.averageRating * data.numRating + newRating;
-    const newAverageRating = totalRatingSum / newNumRating;
+    const newAverageRating = Math.round(totalRatingSum / newNumRating);
 
     // Update your data object and selectedRating if necessary
     data.numRating = newNumRating;
     data.averageRating = newAverageRating;
-
-    // Assuming $selectedRating is a writable store you're using to track the selected rating
-    // Update it or perform necessary actions here, depending on your application's needs
   }
 
   let selectedRating = writable(0);
+  // Function to update rating for a spot
+
+  function rateItem(spotsId, newRating) {
+    spots.update((allItems) => {
+      return allItems.map((spots) => {
+        if (spots.id === spotsId) {
+          // Calculate the new average rating
+          const totalRating = spots.rating * spots.numRatings + newRating;
+          const newNumRatings = spots.numRatings + 1;
+          const newAverageRating = totalRating / newNumRatings;
+
+          return {
+            ...spots,
+            rating: newAverageRating,
+            numRatings: newNumRatings,
+          };
+        }
+        return spots;
+      });
+    });
+  }
+
+  let ratingForm;
 </script>
 
 <div
@@ -137,24 +162,28 @@
     <div class="flex items-center gap-6 font-bold text-blue-gray-500">
       <div class="inline-flex items-center gap-1">
         <div class="bodyOne flex">
-          <div class="rating">
-            {#each Array(5) as _, i (5 - i)}
-              <input
-                type="radio"
-                id={`star${5 - i}`}
-                bind:group={$selectedRating}
-                value={5 - i}
-                on:change={() => selectRating(5 - i)}
-              />
-              <label for={`star${5 - i}`}>★</label>
-            {/each}
-          </div>
+          <form bind:this={ratingForm} method="post" action="?/myform">
+            <div class="rating">
+              {#each Array(5) as _, i (5 - i)}
+                <input
+                  type="radio"
+                  id={`star${5 - i}`}
+                  bind:group={$selectedRating}
+                  value={5 - i}
+                  name="star"
+                  on:change={() => selectRating(5 - i)}
+                />
+                <label for={`star${5 - i}`}>★</label>
+              {/each}
+            </div>
+          </form>
         </div>
         <p
           class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
         >
           |
         </p>
+
         <div>
           {#if data.averageRating}
             <div class="flex">

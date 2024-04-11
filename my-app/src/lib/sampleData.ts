@@ -1,3 +1,5 @@
+import { writable } from "svelte/store";
+
 export const spots = [
   {
     name: "Biking for family",
@@ -183,3 +185,23 @@ export const spots = [
     numRating: 22,
   },
 ];
+
+
+export const smallStore = writable ([
+  {
+    name: "Biking for family",
+    type: "Bike Trail",
+    description: "Bike Trail for hard core",
+    longDescription:
+      "Bike Trail for hard core. Explore rivers and coastlines with guided kayak tours. Perfect for families looking to challenge themselves with exciting trails while enjoying the great outdoors.",
+    averageRating: 1,
+    pic: "Spots_bike_trail.JPG",
+    class: "star star4:before",
+    id: 0,
+    price: "$110.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 1,
+  }
+]);
