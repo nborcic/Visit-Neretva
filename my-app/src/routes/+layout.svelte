@@ -1,59 +1,53 @@
-<script lang="js">
-  
+<script lang="ts">
+  import MapOfSpots from "./../lib/components/MapOfSpots.svelte";
   import "../app.css";
   import "$lib/sampleData.ts";
-  import "../app.css";
-  import { spots } from "$lib/sampleData";
+  import { goto } from "$app/navigation";
 
   let inputValue = "";
-  let searchResults = [];
+  const currentPage = "bike";
 
-  function handleButtonClick() {
-    goto("/search?q=" + inputValue);
-  }
-  function handleButtonClickSea() {
-    goto("/search?q=sea");
-  }
-  function handleButtonClickClimb() {
-    goto("/search?q=climb");
-  }
-  function handleButtonClickHights() {
-    goto("/search?q=high");
-  }
-  function handleButtonClickstart() {
-    goto("/startAuth");
-  }
+  const links = [
+    { name: "Bike", q: "biki" },
+    { name: "Sea", q: "sea" },
+    { name: "Climb", q: "climb" },
+    { name: "Heights", q: "high" },
+  ];
 
-  import { goto } from "$app/navigation";
+  
 </script>
 
-<div class="flex flex-col items-center h-screen bg-white">
-  <div class="max-w-[1280px] gap-4 flex flex-col">
-    <header class="sticky top-0 bg-white w-full">
-      <div
-        class="w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
-      >
-        <div class="flex justify-between items-center p-4 border bg-amber-200">
-          <div class="flex gap-3 items-center">
-            <img
-              src="/Spots_images/spotslogo.jpeg"
-              class="h-8 rounded-sm"
-              alt="NeretvaLogo"
-            />
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-              <span
-                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                >Explore Neretva</span
+<div class="flex flex-col items-center h-screen">
+  <div class="max-w-[1280px] gap-4 flex flex-col bg-gray-100">
+    <header class="sticky top-0 w-full">
+      <div class="w-full bg-gray-100">
+        <div
+          class="flex justify-between items-center px-8 py-2 border-b border-b-gray-300"
+        >
+          <a href="/spots">
+            <div class=" p-3 rounded-2xl cursor-pointer font-bold">
+              <h1 class="text-2xl">Visit Neretva</h1>
+            </div>
+          </a>
+          <div class="flex gap-8 font-semibold">
+            {#each links as link}
+              <button
+                class="text-black rounded-2xl bg-gray-100 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2 -600"
+                on:click={() => goto("/search?q=" + link.q)}
               >
-            </a>
+                {link.name}
+              </button>
+            {/each}
           </div>
+
+          <!-- svelte-ignore a11y-invalid-attribute -->
+
           <div class="flex items-center gap-4">
             <input
               type="text"
               id="input"
               bind:value={inputValue}
-              class="block p-4 pl-10 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block p-2 pl-10 rounded-xl w-full text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Explore Neretva"
               required
             />
@@ -61,67 +55,18 @@
               type="submit"
               id="btn"
               disabled={!inputValue}
-              on:click={handleButtonClick}
-              class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-200"
+              class="text-black rounded-2xl bg-gray-100 hover:bg-[rgb(232,158,61)] hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2"
               >Search</button
             >
           </div>
         </div>
         <!-- Additional navigation and dropdowns -->
       </div>
-      <div class="flex text-2xl gap-5 px-1">
-        <div class="flex">
-          <div class=""></div>
-          <a
-            href="https://www.google.com/maps/@43.025144,17.5368241,12.67z/data=!5m2!1e2!1e4?entry=ttu"
-            target="_blank"
-            ><img
-              src="/Spots_images/mapIcon.jpg"
-              alt="mapLogo"
-              class="h-6 w-6"
-            /></a
-          >
-        </div>
-        <div class="text-2xl font-semibold px-4 text-green-500">
-          <a href="/spots/">Neretva</a>
-        </div>
-        <div class="flex flex-auto">
-          <div class="flex gap-2 font-semibold">
-            <button
-              class=" bg-white px-4 text-blue-700"
-              on:click={handleButtonClick}>Bike</button
-            >
-            <button
-              class=" bg-white px-4 text-blue-700"
-              on:click={handleButtonClickSea}>Sea</button
-            >
-            <button
-              class=" bg-white px-4 text-blue-700"
-              on:click={handleButtonClickClimb}>Climb</button
-            >
-            <button
-              class=" bg-white px-4 text-blue-700"
-              on:click={handleButtonClickHights}>Heights</button
-            >
-          </div>
-        </div>
-        <div>
-          <div class="flex font-semibold">
-            <button
-              class="flex font-semibold bg-white border-l-2 border-b-2 border-blue-200 px-4 text-blue-700 shadow-sm rounded-sm"
-              on:click={handleButtonClickstart}>Log In/Sign In</button
-            >
-          </div>
-        </div>
-      </div>
     </header>
     <div class="flex flex-col justify-center items-center bg-gray-100">
-      <main class="w-full p-4">
-        <alert />
+      <main class="w-full">
         <slot />
       </main>
     </div>
   </div>
 </div>
-
-

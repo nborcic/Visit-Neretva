@@ -1,17 +1,14 @@
 <script lang="ts">
-  
-  import { spots } from "$lib/sampleData";
   import { writable, get } from "svelte/store";
   import Swal from "sweetalert2";
-
   import type { PageData } from "./$types";
+  import Test from "$lib/components/Test.svelte";
 
   export let data: PageData;
 
-  let name = "";
-
-  async function selectRating(newRating: number) {
+  async function selectRating(spotsId: number, newRating: number) {
     ratingForm.submit();
+    rateItem(spotsId, newRating);
     // rateItem(data.id, newRating);
 
     Swal.fire({
@@ -32,46 +29,50 @@
   }
 
   let selectedRating = writable(0);
+
   // Function to update rating for a spot
-
   function rateItem(spotsId, newRating) {
-    spots.update((allItems) => {
-      return allItems.map((spots) => {
-        if (spots.id === spotsId) {
-          // Calculate the new average rating
-          const totalRating = spots.rating * spots.numRatings + newRating;
-          const newNumRatings = spots.numRatings + 1;
-          const newAverageRating = totalRating / newNumRatings;
+    console.log("Spot ID:", spotsId, "New Rating:", newRating);
 
-          return {
-            ...spots,
-            rating: newAverageRating,
-            numRatings: newNumRatings,
-          };
-        }
-        return spots;
-      });
-    });
+    // spots.update((allItems) => {
+    //   return allItems.map((spots) => {
+    //     if (spots.id === spotsId) {
+    //       // Calculate the new average rating
+    //       const totalRating = spots.rating * spots.numRatings + newRating;
+    //       const newNumRatings = spots.numRatings + 1;
+    //       const newAverageRating = totalRating / newNumRatings;
+
+    //       return {
+    //         ...spots,
+    //         rating: newAverageRating,
+    //         numRatings: newNumRatings,
+    //       };
+    //     }
+    //     return spots;
+    //   });
+    // });
   }
 
   let ratingForm;
 </script>
 
 <div
-  class="flex flex-col items-center gap-2 border border-gray-400 rounded shadow p-2 font-sans"
+  class="flex flex-col items-center rounded-md gap-2 shadow-md p-2 font-sans bg-blend-hard-light"
 >
   <!--each box-->
 
   <div class="flex _title">
-    <p class="flex font-extrabold text-2xl">{data.name}</p>
+    <p class="flex font-extrabold text-2xl">
+      {data.name}
+    </p>
   </div>
   <div
-    class="flex _3_titleAndImage flex-row items-center gap-3 border transition bg-blue-100"
+    class="flex _3_titleAndImage flex-row items-center rounded-md gap-3 transition"
   >
     <img
       src="/Spots_images/{data.pic}"
       alt="bikeTrail"
-      class="h-52 flex transition ease-in-out hover:scale-105"
+      class="h-52 flex transition ease-in-out hover:scale-110 hover:scaleX-110 hover:shadow-lg rounded-md"
     />
     <div class="flex flex-col">
       <!--Discription and review rate-->
@@ -81,14 +82,15 @@
       <div class="flex font-serif font-bolder gap-2">
         Average Spot Rating: {data.averageRating}
       </div>
-      <a href="/spots/" class="font-serif font-bolder"> Home</a>
+      <a href="/spots/" class="font-serif text-[rgb(232,158,61)]"> Home</a>
     </div>
   </div>
 </div>
-<!-- 3 columns containing item deatails under picture-->
-<div class="flex h-64 w-full gap-5 shadow-md border shrink justify-between">
+
+<!-- 3 columns containing item details under picture-->
+<div class="flex h-64 w-full gap-5 shadow-md rounded-md shrink justify-between">
   <div
-    class="devides_first flex flex-col w-full p-3 border rounded-sm justify-between"
+    class="devides_first flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-md justify-between"
   >
     <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
@@ -110,7 +112,7 @@
     </div>
   </div>
   <div
-    class="devides_second flex flex-col w-full p-3 border rounded-sm justify-between"
+    class="devides_second flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-sm justify-between"
   >
     <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
@@ -132,7 +134,7 @@
     </div>
   </div>
   <div
-    class="devides_third flex flex-col w-full p-3 border rounded-sm justify-between"
+    class="devides_third flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-sm justify-between"
   >
     <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
       <h3>
@@ -171,18 +173,18 @@
                   bind:group={$selectedRating}
                   value={5 - i}
                   name="star"
-                  on:change={() => selectRating(5 - i)}
+                  on:change={() => selectRating(data.id, 5 - i)}
                 />
                 <label for={`star${5 - i}`}>★</label>
               {/each}
             </div>
           </form>
         </div>
-        <p
+        <span
           class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
         >
           |
-        </p>
+        </span>
 
         <div>
           {#if data.averageRating}
@@ -210,9 +212,6 @@
 </div>
 
 <style>
-  .star {
-    cursor: pointer;
-  }
   .rating {
     display: flex;
     justify-content: center;
@@ -229,8 +228,8 @@
   .rating label:hover,
   .rating label:hover ~ label {
     color: orange;
-  } /* Hover effect */
+  }
   .rating input:checked ~ label {
     color: orange;
-  } /* Filled effect */
+  }
 </style>

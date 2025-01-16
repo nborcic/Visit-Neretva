@@ -1,11 +1,10 @@
 import { spots } from "$lib/sampleData";
-export async function load({ params, url }) {
-  let q = url.searchParams.get("q");
+export async function load({ url }) {
+  let q: any = url.searchParams.get("q");
 
   const results = spots.filter((spot) =>
     spot.name.toLowerCase().includes(q.toLowerCase())
   );
-  
-  
-  return { spots: results};
+
+  return { spots: results };
 }

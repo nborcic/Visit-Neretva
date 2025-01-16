@@ -4,11 +4,13 @@
   import { pics } from "$lib/carouselPics";
   import emblaCarouselSvelte from "embla-carousel-svelte";
   import Autoplay from "embla-carousel-autoplay";
+  import MapOfSpots from "$lib/components/MapOfSpots.svelte";
+
   export let data;
   let spots = data.spots;
 
   onMount(() => {
-    console.log(data);
+    // console.log(data);
   });
 
   /**
@@ -21,12 +23,69 @@
   let plugins = [Autoplay(300)];
 </script>
 
-<div class="flex flex-wrap _1 gap-7 justify-center">
+<div class="h-24 w-full"></div>
+<hero1 class="flex flex-row h-[45vh]">
+  <!-- Left side text content -->
+  <div class="primary w-[50%] flex flex-col justify-center p-8 text-black">
+    <div class="title mb-6">
+      <h1 tabindex="-1" class="text-4xl font-bold text-[#E89E3D]">
+        See
+        <span class="text-green-500"> More </span>
+        Do <span class="text-green-500"> More </span>
+        <br /> Neretva
+        <span class="text-green-500"> Valley </span>
+      </h1>
+    </div>
+    <div class="description mb-6">
+      <p class="text-lg">
+        Material 3 is the latest version of Google’s open-source design system.
+        Design and build beautiful, usable products with Material 3.
+      </p>
+    </div>
+    <div>
+      <a href="/get-started" target="_self">
+        <button class="mio-button">
+          <div class="state-overlay">What's next</div>
+          <span class="label">Explore Places</span>
+          <div class="ripple"></div>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Right side video with pause button -->
+  <div class="flex h-full justify-center items-center w-[50%] relative">
+    <mio-video>
+      <div class="video-container relative">
+        <video
+          preload="auto"
+          autoplay
+          loop
+          playsinline="true"
+          class="rounded-2xl w-full h-full object-cover pr-2"
+        >
+          <source
+            src="https://kstatic.googleusercontent.com/files/65da8f0326427a8e71bfa678348f3fa1a4bb1660e0b013591eb3bfd9df455bd5a3334249de61229029be7d2fd7cf18d4e143728b7e0702b6bde6251a9c64511a"
+          />
+        </video>
+        <button
+          id="btnToggleVideo"
+          class="absolute bottom-4 right-4 rounded-full bg-white p-2 z-50 text-black"
+          aria-label="Pause Video"
+        >
+          <span class="google-symbols">pause</span>
+        </button>
+      </div>
+    </mio-video>
+  </div>
+</hero1>
+<div class="h-24 w-full"></div>
+<div class="flex flex-wrap _1 gap-7 justify-center font-sans p-2">
   <!--contains boxes-->
 
   {#each spots as spot}
     <div
-      class="flex flex-col items-center gap-2 border border-gray-400 hover:cursor-pointer rounded shadow w-80 p-2 font-sans"
+      class="flex flex-col items-center gap-2 border-gray-400 hover:cursor-pointer rounded shadow-md w-80 p-2 font-sans hover:scale-110 hover:scaleX-110 hover:shadow-lg transition ease-in-out"
       role="presentation"
       on:click={() => navigateToSpot(spot.id)}
     >
@@ -44,9 +103,11 @@
         <div class="flex flex-col">
           <!--Discription and review rate-->
           <div class="flex text-sm">{spot.description}</div>
-          <div class="flex">{spot.averageRating}</div>
+          <div class="flex text-sm">Rating: {spot.averageRating}</div>
 
-          <a href="/spots/{spot.id}" class="flex text-center hover:text-red"
+          <a
+            href="/spots/{spot.id}"
+            class="flex text-center hover:text-white text-sm h-4 hover:bg-grey-700"
             >Show more</a
           >
         </div>
@@ -55,21 +116,29 @@
   {/each}
 </div>
 
-<div class="embla m-7" use:emblaCarouselSvelte={{ options, plugins }}>
-  <div class="embla__container">
-    {#each pics as pic}
-      <div
-        class="embla__slide w-full h-[700px] overflow-y-hidden flex items-center"
-      >
-        <!-- svelte-ignore a11y-missing-attribute -->
-        <img src={pic.pic} class="w-full" />
-      </div>
-    {/each}
+<div>
+  <div
+    class="embla mt-4 rounded-md shadow-md"
+    use:emblaCarouselSvelte={{ options, plugins }}
+  >
+    <div class="embla__container">
+      {#each pics as pic}
+        <div
+          class="embla__slide w-full h-[50vh] overflow-hidden flex items-center"
+        >
+          <img src={pic.pic} class="w-full" alt="carousel pictures" />
+        </div>
+      {/each}
+    </div>
+    <h1 class="text-center font-bold font-Manrope relative text-white">
+      This is us
+    </h1>
   </div>
-
-  <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+  <footer
+    class="bg-gray-100 mt-2 rounded-md shadow-md w-[100%] dark:bg-gray-800"
+  >
     <div
-      class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+      class="rounded-md shadow-md max-w-screen-xl p-4 pr-4 md:flex md:items-center md:justify-between"
     >
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
         >© 2024 <a href="https://google.com/" class="hover:underline"
@@ -77,7 +146,7 @@
         >. All Rights Reserved.
       </span>
       <ul
-        class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+        class="flex pr-2 items-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
       >
         <li>
           <!-- svelte-ignore a11y-invalid-attribute -->
