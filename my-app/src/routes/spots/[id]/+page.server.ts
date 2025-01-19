@@ -46,8 +46,7 @@ export const actions = {
 async function updateDataFile(newName: any, spots: any) {
   // const filePath = "static/sampleData.json";
 
-  const getThatID = spots.find((spot: any) => spot.id == newName);
-  console.log(getThatID);
+ 
 
   // const data = JSON.parse(await fs.readFile(filePath, "utf8"));
 

@@ -8,7 +8,9 @@
 
   export let data;
   let spots = data.spots;
-
+  export async function load() {
+    goto("/spots");
+  }
   onMount(() => {
     // console.log(data);
   });
