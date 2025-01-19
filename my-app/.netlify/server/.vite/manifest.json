@@ -12,6 +12,10 @@
     "file": "_app/immutable/assets/app.CRekBb6g.css",
     "src": "_app.js"
   },
+  "_carouselPics.js": {
+    "file": "chunks/carouselPics.js",
+    "name": "carouselPics"
+  },
   "_client.js": {
     "file": "chunks/client.js",
     "name": "client",
@@ -85,13 +89,21 @@
       "_app/immutable/assets/app.CRekBb6g.css"
     ]
   },
+  "src/routes/+page.server.ts": {
+    "file": "entries/pages/_page.server.ts.js",
+    "name": "entries/pages/_page.server.ts",
+    "src": "src/routes/+page.server.ts",
+    "isEntry": true
+  },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
     "name": "entries/pages/_page.svelte",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_client.js",
+      "_carouselPics.js"
     ]
   },
   "src/routes/+page.ts": {
@@ -141,7 +153,8 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_client.js"
+      "_client.js",
+      "_carouselPics.js"
     ]
   },
   "src/routes/spots/[id]/+layout.svelte": {
