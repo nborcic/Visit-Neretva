@@ -5,11 +5,15 @@
 
   export let data: PageData;
 
-  async function selectRating(spotsId: number, newRating: number) {
-    ratingForm.submit();
-    rateItem(spotsId, newRating);
-    // rateItem(data.id, newRating);
+  // State to track the selected rating
+  let selectedRating = writable(0);
 
+  // Function to handle the rating selection
+  async function selectRating(spotsId: number, newRating: number) {
+    event.preventDefault();
+    ratingForm.submit();
+
+    rateItem(spotsId, newRating);
     Swal.fire({
       icon: "success",
       title: `Thanks for ${newRating} stars!`,
@@ -18,217 +22,115 @@
     });
 
     const newNumRating = Number(data.numRating) + 1;
-
     const totalRatingSum = data.averageRating * data.numRating + newRating;
     const newAverageRating = Math.round(totalRatingSum / newNumRating);
 
-    // Update your data object and selectedRating if necessary
+    // Update the data object with new rating info
     data.numRating = newNumRating;
     data.averageRating = newAverageRating;
   }
 
-  $: selectedRating = writable(0);
-
   // Function to update rating for a spot
   function rateItem(spotsId: number, newRating: number) {
     console.log("Spot ID:", spotsId, "New Rating:", newRating);
-
-    // spots.update((allItems) => {
-    //   return allItems.map((spots) => {
-    //     if (spots.id === spotsId) {
-    //       // Calculate the new average rating
-    //       const totalRating = spots.rating * spots.numRatings + newRating;
-    //       const newNumRatings = spots.numRatings + 1;
-    //       const newAverageRating = totalRating / newNumRatings;
-
-    //       return {
-    //         ...spots,
-    //         rating: newAverageRating,
-    //         numRatings: newNumRatings,
-    //       };
-    //     }
-    //     return spots;
-    //   });
-    // });
   }
 
-  let ratingForm: FormData;
+  let ratingForm: HTMLFormElement;
+  const selectedRatingNumber = writable({});
 </script>
 
 <div
-  class="flex flex-col items-center rounded-md gap-2 shadow-md p-2 font-sans bg-blend-hard-light"
+  class="flex flex-col items-center rounded-2xl gap-2 shadow-md p-2 font-Monrope max-w-[1280px]"
 >
-  <!--each box-->
-
   <div class="flex _title">
-    <p class="flex font-extrabold text-2xl">
-      {data.name}
-    </p>
+    <p class="flex font-extrabold py-10 text-4xl">{data.name}</p>
   </div>
   <div
-    class="flex _3_titleAndImage flex-row items-center rounded-md gap-3 transition"
+    class="flex _3_titleAndImage flex-row items-center rounded-md transition p-4"
   >
     <img
       src="/Spots_images/{data.pic}"
-      alt="bikeTrail"
-      class="h-52 flex transition ease-in-out hover:scale-110 hover:scaleX-110 hover:shadow-lg rounded-md"
+      alt="spot image for {data.name}"
+      class=" h-[500px] w-[800px] flex transition rounded-xl ease-in-out hover:scale-105"
     />
-    <div class="flex flex-col">
-      <!--Discription and review rate-->
-      <div class="flex text-sm font-serif font-bolder gap-5">
+    <div class="flex flex-col p-4">
+      <div class="flex text-2xl font-Manrope font-bolder">
         {data.longDescription}
       </div>
-      <div class="flex font-serif font-bolder gap-2">
-        Average Spot Rating: {data.averageRating}
+      <div class="flex font-bolder font-Manrope text-xl">
+        Average Spot Rating: <span class="text-green-500"
+          >&nbsp;{data.averageRating}</span
+        >
+        <span class="text-[#E89E3D]">&nbsp;Stars</span>
       </div>
-      <a href="/spots/" class="font-serif text-[rgb(232,158,61)]"> Home</a>
+      <a
+        href="/spots/"
+        class="font-Manrope text-[rgb(232,158,61)] w-fit p-2 pl-0 text-xl hover:underline"
+        >Home</a
+      >
     </div>
   </div>
 </div>
 
-<!-- 3 columns containing item details under picture-->
-<div class="flex h-64 w-full gap-5 shadow-md rounded-md shrink justify-between">
-  <div
-    class="devides_first flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-md justify-between"
-  >
-    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
-      <h3>
+<div
+  class="flex h-64 w-full gap-5 shadow-md rounded-2xl shrink justify-between"
+>
+  {#each [data, data, data] as spot}
+    <div class="flex flex-col w-full p-3 rounded-md justify-between">
+      <div class="font-normal flex flex-col p-2 gap-2">
         <div>
-          Ratings and reviews {data.averageRating}
+          <h3 class="underline">Reviews and Website:</h3>
+          <p>Ratings and reviews {spot.averageRating}</p>
+          <p>{spot.website}</p>
         </div>
-
-        <div>
-          {data.website}
-        </div>
-      </h3>
+      </div>
+      <div class="flex p-2">
+        Daily price:<br />
+        {spot.price} - {spot.type}
+      </div>
+      <div class="items-center p-2 gap-2">
+        <h3 class="underline">Contact Info:</h3>
+        <div>{spot.phoneNumber}</div>
+        {spot.address}
+      </div>
     </div>
-    <div class="flex p-2 gap-2">
-      {data.price}-{data.type}
-    </div>
-    <div class="items-center p-2 gap-2 border-t-2">
-      <div>{data.phoneNumber}</div>
-      {data.address}
-    </div>
-  </div>
-  <div
-    class="devides_second flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-sm justify-between"
-  >
-    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
-      <h3>
-        <div>
-          Ratings and reviews {data.averageRating}
-        </div>
-
-        <div>
-          {data.website}
-        </div>
-      </h3>
-    </div>
-    <div class="flex p-2 gap-2">
-      {data.price}-{data.type}
-    </div>
-    <div class="items-center p-2 gap-2 border-t-2">
-      <div>{data.phoneNumber}</div>
-      {data.address}
-    </div>
-  </div>
-  <div
-    class="devides_third flex flex-col w-full p-3 border border-r-0 border-l-0 rounded-sm justify-between"
-  >
-    <div class="font-semibold flex flex-col border-b-2 p-2 gap-2">
-      <h3>
-        <div>
-          Ratings and reviews {data.averageRating}
-        </div>
-
-        <div>
-          {data.website}
-        </div>
-      </h3>
-    </div>
-    <div class="flex p-2 gap-2">
-      {data.price}-{data.type}
-    </div>
-    <div class="items-center p-2 gap-2 border-t-2">
-      <div>{data.phoneNumber}</div>
-      {data.address}
-    </div>
-  </div>
+  {/each}
 </div>
 
+<!-- Review and Rating Section -->
 <div class="reviewAndRating">
   <div
-    class="grid min-h-[140px] w-full place-items-center rounded-lg p-6 lg:overflow-visible"
+    class="flex min-h-[140px] w-full items-center py-10 justify-center rounded-lg lg:overflow-visible"
   >
-    <div class="flex items-center gap-6 font-bold text-blue-gray-500">
-      <div class="inline-flex items-center gap-1">
-        <div class="bodyOne flex">
-          <form bind:this={ratingForm} method="post" action="?/myform">
-            <div class="rating">
-              {#each Array(5) as _, i (5 - i)}
-                <input
-                  type="radio"
-                  id={`star${5 - i}`}
-                  bind:group={$selectedRating}
-                  value={5 - i}
-                  name="star"
-                  on:change={() => selectRating(data.id, 5 - i)}
-                />
-                <label for={`star${5 - i}`}>★</label>
-              {/each}
-            </div>
-          </form>
-        </div>
-        <span
-          class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-500"
-        >
-          |
-        </span>
+    <div class="flex flex-col items-center gap-6 font-bold text-blue-gray-500">
+      <h1 class="text-2xl pb-2">
+        You have already visited this place. Why not rate it now?
+      </h1>
 
-        <div>
-          {#if data.averageRating}
-            <div class="flex">
-              <div>
-                {data.averageRating} Stars quality rating from {data.numRating} Reviews
-              </div>
-            </div>
-            <span class="flex star text-xl cursor-none">
-              {#each { length: 5 } as star, index}
-                {#if index < data.averageRating}
-                  <div class="text-yellow-400 text-4xl">★</div>
-                {:else}
-                  <div class="text-grey-950 text-4xl">☆</div>
-                {/if}
-              {/each}
-            </span>
-          {:else}
-            <p>No rating available.</p>
-          {/if}
-        </div>
+      <div class="inline-flex items-center">
+        <form bind:this={ratingForm} method="post" action="?/myform">
+          <div class="rating flex justify-center flex-row-reverse gap-5 group">
+            {#each Array(5) as _, i (5 - i)}
+              <input
+                class="hidden peer"
+                type="radio"
+                id={`star${5 - i}`}
+                bind:group={$selectedRating}
+                value={5 - i}
+                name="star"
+                on:change={() =>
+                  data.id !== undefined && selectRating(data.id, 5 - i)}
+              />
+              <label
+                class="text-gray-500 text-3xl cursor-pointer peer-checked:text-orange-400 peer-hover:text-orange-400 group-hover:peer-checked:text-orange-400"
+                for={`star${5 - i}`}
+              >
+                ★
+              </label>
+            {/each}
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .rating {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    flex-direction: row-reverse;
-  }
-  .rating input {
-    display: none;
-  }
-  .rating label {
-    font-size: 30px;
-    color: grey;
-  }
-  .rating label:hover,
-  .rating label:hover ~ label {
-    color: orange;
-  }
-  .rating input:checked ~ label {
-    color: orange;
-  }
-</style>

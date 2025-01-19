@@ -13,13 +13,11 @@
     // console.log(data);
   });
 
- 
-
   let options = { loop: true };
   let plugins = [Autoplay(300)];
 </script>
 
-<div class="h-24 w-full"></div>
+<div class="h-24 w-full" id="top"></div>
 <hero1 class="flex flex-row h-[45vh] font-Manrope bg-white">
   <!-- Left side text content -->
   <div class="primary w-[50%] flex flex-col justify-center p-8 text-black">
@@ -39,13 +37,9 @@
       </p>
     </div>
     <div>
-      <a href="/get-started" target="_self">
-        <button class="mio-button">
-          <div class="state-overlay">What's next</div>
-          <span class="label">Explore Places</span>
-          <div class="ripple"></div>
-        </button>
-      </a>
+      <button>
+        <a href="#valley"><span class="label">Explore Valley</span></a>
+      </button>
     </div>
   </div>
 
@@ -75,7 +69,10 @@
 </div>
 
 <div class="h-22 w-full"></div>
-<div class="text-2xl py-10 font-bold flex justify-center items-center">
+<div
+  class="text-2xl py-10 font-bold flex justify-center items-center"
+  id="valley"
+>
   Explore Neretva Valley
 </div>
 <div class="grid grid-cols-3 gap-4 w-full mx-auto">
@@ -135,20 +132,12 @@
         class="flex pr-2 items-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
       >
         <li>
-          <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="hover:underline me-4 md:me-6">About</a>
+          <a href="#top" class="hover:underline me-4 md:me-6">About</a>
         </li>
+
         <li>
           <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-        </li>
-        <li>
-          <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-        </li>
-        <li>
-          <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="hover:underline">Contact</a>
+          <a href="#top" class="hover:underline">Contact</a>
         </li>
       </ul>
     </div>

@@ -7,7 +7,6 @@
     "averageRating": 1,
     "pic": "Spots_bike_trail.JPG",
     "tag": "bike",
-
     "id": 0,
     "price": "$110.00",
     "address": "Placeholder for address",
@@ -122,7 +121,6 @@
   },
   {
     "name": "Skydiving Extreme Rush",
-
     "type": "Activity",
     "description": "Feel the thrill of freefalling from the sky.",
     "longDescription": "Take on the ultimate adventure and skydive from thousands of feet in the air. Our instructors will guide you through every step of the exhilarating freefall experience.",
