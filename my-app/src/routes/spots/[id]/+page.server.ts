@@ -33,22 +33,25 @@ export async function load({ params }) {
 export const actions = {
   myform: async ({ request }) => {
     const formData = await request.formData();
-    const star = formData.get("star");
-    console.log("star chosen", star);
+    const selRating = formData.get("selRating");
+    const spotId = formData.get("spotId");
+    console.log(spotId, selRating);
 
-    await updateDataFile(star);
+    // await updateDataFile(star, spots);
 
     return {};
   },
 };
 
-async function updateDataFile(newName: any) {
-  const filePath = "static/sampleData.json";
+async function updateDataFile(newName: any, spots: any) {
+  // const filePath = "static/sampleData.json";
 
-  const data = JSON.parse(await fs.readFile(filePath, "utf8"));
+  const getThatID = spots.find((spot: any) => spot.id == newName);
+  console.log(getThatID);
 
-  data.name = newName;
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+  // const data = JSON.parse(await fs.readFile(filePath, "utf8"));
+
+  // await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
 }
 
 // import Database from "better-sqlite3";

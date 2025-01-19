@@ -2,6 +2,7 @@
   import { writable } from "svelte/store";
   import Swal from "sweetalert2";
   import type { PageData } from "./$types";
+  import { spots } from "$lib/sampleData";
 
   export let data: PageData;
 
@@ -14,6 +15,7 @@
     ratingForm.submit();
 
     rateItem(spotsId, newRating);
+
     Swal.fire({
       icon: "success",
       title: `Thanks for ${newRating} stars!`,
@@ -33,9 +35,10 @@
   // Function to update rating for a spot
   function rateItem(spotsId: number, newRating: number) {
     console.log("Spot ID:", spotsId, "New Rating:", newRating);
+    return { spotsId, newRating };
   }
 
-  let ratingForm: HTMLFormElement;
+  let ratingForm: any;
   const selectedRatingNumber = writable({});
 </script>
 
@@ -109,6 +112,7 @@
 
       <div class="inline-flex items-center">
         <form bind:this={ratingForm} method="post" action="?/myform">
+          <input type="hidden" name="spotId" value={data.id} />
           <div class="rating flex justify-center flex-row-reverse gap-5 group">
             {#each Array(5) as _, i (5 - i)}
               <input
@@ -117,7 +121,7 @@
                 id={`star${5 - i}`}
                 bind:group={$selectedRating}
                 value={5 - i}
-                name="star"
+                name="selRating"
                 on:change={() =>
                   data.id !== undefined && selectRating(data.id, 5 - i)}
               />
@@ -128,6 +132,9 @@
                 ★
               </label>
             {/each}
+          </div>
+          <div class="mt-4">
+            <p>Selected Rating: {$selectedRating}</p>
           </div>
         </form>
       </div>
