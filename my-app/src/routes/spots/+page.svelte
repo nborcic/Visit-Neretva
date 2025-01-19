@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { pics } from "$lib/carouselPics";
   import emblaCarouselSvelte from "embla-carousel-svelte";
   import Autoplay from "embla-carousel-autoplay";
-  import MapOfSpots from "$lib/components/MapOfSpots.svelte";
+  import { navigateToSpot } from "$lib/utils.js";
 
   export let data;
   let spots = data.spots;
@@ -13,18 +13,14 @@
     // console.log(data);
   });
 
-  /**
-   * @param {number} spotsid
-   */
-  function navigateToSpot(spotsid) {
-    goto(`/spots/${spotsid}`);
-  }
+ 
+
   let options = { loop: true };
   let plugins = [Autoplay(300)];
 </script>
 
 <div class="h-24 w-full"></div>
-<hero1 class="flex flex-row h-[45vh]">
+<hero1 class="flex flex-row h-[45vh] font-Manrope bg-white">
   <!-- Left side text content -->
   <div class="primary w-[50%] flex flex-col justify-center p-8 text-black">
     <div class="title mb-6">
@@ -37,9 +33,9 @@
       </h1>
     </div>
     <div class="description mb-6">
-      <p class="text-lg">
-        Material 3 is the latest version of Google’s open-source design system.
-        Design and build beautiful, usable products with Material 3.
+      <p class="text-lg font-normal">
+        From thrilling skydiving adventures to breathtaking sightseeing and
+        world-class diving, Neretva offers unforgettable experiences for all.
       </p>
     </div>
     <div>
@@ -53,90 +49,80 @@
     </div>
   </div>
 
-  <!-- Right side video with pause button -->
+  <!-- Right side video -->
   <div class="flex h-full justify-center items-center w-[50%] relative">
-    <mio-video>
-      <div class="video-container relative">
-        <video
-          preload="auto"
-          autoplay
-          loop
-          playsinline="true"
-          class="rounded-2xl w-full h-full object-cover pr-2"
-        >
-          <source
-            src="https://kstatic.googleusercontent.com/files/65da8f0326427a8e71bfa678348f3fa1a4bb1660e0b013591eb3bfd9df455bd5a3334249de61229029be7d2fd7cf18d4e143728b7e0702b6bde6251a9c64511a"
-          />
-        </video>
-        <button
-          id="btnToggleVideo"
-          class="absolute bottom-4 right-4 rounded-full bg-white p-2 z-50 text-black"
-          aria-label="Pause Video"
-        >
-          <span class="google-symbols">pause</span>
-        </button>
-      </div>
-    </mio-video>
+    <div class="relative w-[600px] h-[380px] overflow-hidden rounded-2xl">
+      <iframe
+        class="rounded-2xl h-full w-full shadow-2xl"
+        src="https://www.youtube.com/embed/He_szuxhoNY?autoplay=1&Version=3&showinfo=0&loop=1&rel=1&controls=0&mute=1&playlist=He_szuxhoNY"
+        title="Prodovi Intro"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
 </hero1>
-<div class="h-24 w-full"></div>
-<div class="flex flex-wrap _1 gap-7 justify-center font-sans p-2">
-  <!--contains boxes-->
+<div
+  class="bg-white pb-32 w-full h-10 gap-8 rounded-xl flex justify-center items-center"
+>
+  <img src="/poweredBy/aramco.svg" alt="aramco logo" />
+  <img src="/poweredBy/bbraun.svg" alt="bbraun logo" />
+  <img src="/poweredBy/energy-commission.svg" alt="energy-commission logo" />
+  <img src="/poweredBy/equinor.svg" alt="equinor logo" />
+  <img src="/poweredBy/omv.svg" alt="omv logo" />
+</div>
 
+<div class="h-22 w-full"></div>
+<div class="text-2xl py-10 font-bold flex justify-center items-center">
+  Explore Neretva Valley
+</div>
+<div class="grid grid-cols-3 gap-4 w-full mx-auto">
   {#each spots as spot}
     <div
-      class="flex flex-col items-center gap-2 border-gray-400 hover:cursor-pointer rounded shadow-md w-80 p-2 font-sans hover:scale-110 hover:scaleX-110 hover:shadow-lg transition ease-in-out"
+      class="flex flex-col items-start gap-2 border-gray-400 hover:cursor-pointer rounded-xl shadow-md w-full font-Manrope h-[310px] hover:shadow-lg transition ease-in-out hover:bg-green-500"
       role="presentation"
       on:click={() => navigateToSpot(spot.id)}
     >
-      <!--each box-->
-
-      <div class="flex _title">
-        <p class="flex">{spot.name}</p>
-      </div>
-      <div class="flex _3_titleAndImage flex-row items-center gap-2">
+      <div class="w-full h-[200px]">
         <img
           src="/Spots_images/{spot.pic}"
-          alt=""
-          class="h-32 w-[180px] rounded-sm"
+          alt="Image for {spot.name}"
+          class="w-full h-full object-cover rounded-t-xl"
         />
-        <div class="flex flex-col">
-          <!--Discription and review rate-->
-          <div class="flex text-sm">{spot.description}</div>
-          <div class="flex text-sm">Rating: {spot.averageRating}</div>
+      </div>
 
-          <a
-            href="/spots/{spot.id}"
-            class="flex text-center hover:text-white text-sm h-4 hover:bg-grey-700"
-            >Show more</a
-          >
-        </div>
+      <div class="text-left font-medium text-2xl leading-[24px] mt-2 pl-4">
+        {spot.name}
+      </div>
+
+      <div class="text-left text-[16px] font-normal leading-[24px] pl-4">
+        {spot.description}
       </div>
     </div>
   {/each}
 </div>
-
-<div>
+<div class="text-2xl mt-20 font-bold flex justify-center items-center">
+  <span class="text-green-500"> Adventure Awaits</span>:
+  <span class="text-[#E89E3D]"> Discover Neretva's Hidden Gems</span>
+</div>
+<div class="flex flex-col">
   <div
-    class="embla mt-4 rounded-md shadow-md"
+    class="overflow-hidden rounded-xl my-10"
     use:emblaCarouselSvelte={{ options, plugins }}
   >
-    <div class="embla__container">
+    <div class="flex">
       {#each pics as pic}
         <div
-          class="embla__slide w-full h-[50vh] overflow-hidden flex items-center"
+          class=" flex-none min-w-0 w-full h-[50vh] overflow-hidden flex items-center"
         >
           <img src={pic.pic} class="w-full" alt="carousel pictures" />
         </div>
       {/each}
     </div>
-    <h1 class="text-center font-bold font-Manrope relative text-white">
-      This is us
-    </h1>
   </div>
-  <footer
-    class="bg-gray-100 mt-2 rounded-md shadow-md w-[100%] dark:bg-gray-800"
-  >
+  <footer class="bg-white rounded-md shadow-md w-[100%]">
     <div
       class="rounded-md shadow-md max-w-screen-xl p-4 pr-4 md:flex md:items-center md:justify-between"
     >
@@ -168,16 +154,3 @@
     </div>
   </footer>
 </div>
-
-<style>
-  .embla {
-    overflow: hidden;
-  }
-  .embla__container {
-    display: flex;
-  }
-  .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-  }
-</style>

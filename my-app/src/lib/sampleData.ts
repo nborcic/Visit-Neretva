@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+// import { writable } from "svelte/store";
 
 export const spots = [
   {
@@ -9,7 +9,8 @@ export const spots = [
       "Bike Trail for hard core. Explore rivers and coastlines with guided kayak tours. Perfect for families looking to challenge themselves with exciting trails while enjoying the great outdoors.",
     averageRating: 1,
     pic: "Spots_bike_trail.JPG",
-    class: "star star4:before",
+    tag: "bike",
+
     id: 0,
     price: "$110.00",
     address: "Placeholder for address",
@@ -18,13 +19,14 @@ export const spots = [
     numRating: 1,
   },
   {
-    name: "Sea Surf school",
+    name: "Sea kite surf school",
     type: "Activity",
     description: "Place to learn and enjoy surfing.",
     longDescription:
       "A premier destination for aspiring surfers of all ages. Learn the basics or hone your skills with experienced instructors in a fun and supportive environment.",
     averageRating: 3,
     pic: "surf school.jpg",
+    tag: "sea",
     id: 1,
     price: "$110.00",
     address: "Placeholder for address",
@@ -33,13 +35,14 @@ export const spots = [
     numRating: 21,
   },
   {
-    name: "High/Low Skill Rock Climbing Camp",
+    name: "High/Low Skill Climbing Camp",
     type: "Activity",
     description: "Challenging vertical climbs for all skill levels.",
     longDescription:
       "Engage in the ultimate rock climbing adventure. Our camp offers routes for beginners to advanced climbers, focusing on safety, technique, and fun.",
     averageRating: 5,
     pic: "rock clymbing school.jpg",
+    tag: "sea",
     id: 2,
     price: "$110.00",
     address: "Placeholder for address",
@@ -56,11 +59,109 @@ export const spots = [
     averageRating: 3,
     pic: "kayak adventures.jpg",
     id: 3,
+    tag: "sea",
     price: "$110.00",
     address: "Placeholder for address",
     website: "Placeholder for website",
     phoneNumber: "Placeholder for phone number",
     numRating: 122,
+  },
+  {
+    name: "Sea Windsurfing School",
+    type: "Activity",
+    description: "Learn to ride the waves with windsurfing.",
+    longDescription:
+      "Join our windsurfing school and learn how to ride the waves. Our certified instructors provide all the tools you need to master this exciting water sport.",
+    averageRating: 4,
+    pic: "windsurfing_school.jpg",
+    id: 12,
+    price: "$120.00",
+    tag: "sea",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 45,
+  },
+  {
+    name: "Rock Climbing Adventure",
+    type: "Activity",
+    description: "Climb rocks and conquer your fears.",
+    longDescription:
+      "Join our rock climbing adventure tours for an exciting day out. Whether you're a beginner or an experienced climber, you'll love the adrenaline rush and challenge of our climbing walls and natural rock formations.",
+    averageRating: 4.2,
+    tag: "sea",
+    pic: "rock_climbing_adventure.jpg",
+    id: 13,
+    price: "$95.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 32,
+  },
+  {
+    name: "Mountain Bike Trail Challenge",
+    type: "Bike Trail",
+    description: "Test your biking skills on advanced trails.",
+    longDescription:
+      "Our mountain bike trail challenge takes you through rugged terrains and steep inclines. Perfect for experienced bikers looking to challenge themselves in an exciting, fast-paced environment.",
+    averageRating: 4.7,
+    pic: "mountain_bike_challenge.jpg",
+    tag: "sea",
+    id: 14,
+    price: "$80.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 50,
+  },
+  {
+    name: "High Altitude Trekking Expedition",
+    tag: "sea",
+    type: "Activity",
+    description: "Explore the peaks with high-altitude trekking.",
+    longDescription:
+      "Our high-altitude trekking expedition takes you to the top of the world. Experience breathtaking views, challenging terrain, and an adventure of a lifetime with our expert guides.",
+    averageRating: 5,
+    pic: "high_altitude_trekking.jpg",
+    id: 15,
+    price: "$150.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 120,
+  },
+  {
+    name: "Skydiving Extreme Rush",
+
+    type: "Activity",
+    description: "Feel the thrill of free-falling from the sky.",
+    longDescription:
+      "Take on the ultimate adventure and skydive from thousands of feet in the air. Our instructors will guide you through every step of the exhilarating free-fall experience.",
+    averageRating: 4.8,
+    pic: "skydiving_extreme_rush.jpg",
+    id: 16,
+    tag: "sea",
+    price: "$200.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 95,
+  },
+  {
+    name: "Sea Exploration Adventure",
+    type: "Activity",
+    description: "Discover the hidden wonders of caves.",
+    longDescription:
+      "Explore the fascinating world of underground caves with our expert guides. From narrow passages to vast caverns, experience the thrill of discovering what lies beneath the earth.",
+    averageRating: 4.3,
+    pic: "cave_exploration.jpg",
+    id: 17,
+    tag: "sea",
+    price: "$100.00",
+    address: "Placeholder for address",
+    website: "Placeholder for website",
+    phoneNumber: "Placeholder for phone number",
+    numRating: 78,
   },
   {
     name: "Hiking Trails Expedition",
@@ -70,6 +171,7 @@ export const spots = [
       "Join our hiking trails expedition to uncover the wonders of nature. From beginner-friendly paths to challenging treks, experience scenic vistas and unparalleled natural beauty.",
     averageRating: 4,
     pic: "trails expedition.jpg",
+    tag: "sea",
     id: 4,
     price: "$110.00",
     address: "Placeholder for address",
@@ -80,6 +182,7 @@ export const spots = [
   {
     name: "Mountain Biking Blast",
     type: "Activity",
+    tag: "sea",
     description: "Experience thrilling downhill and cross-country trails.",
     longDescription:
       "For adrenaline seekers, our mountain biking blast offers the ultimate experience. Tackle downhill slopes and rugged cross-country trails with expert guides.",
@@ -93,8 +196,9 @@ export const spots = [
     numRating: 72,
   },
   {
-    name: "Skydiving Skyhigh Thrill",
+    name: "Skydiving Sky-high Thrill",
     type: "Activity",
+    tag: "sea",
     description: "Skydive with experienced instructors for an adrenaline rush.",
     longDescription:
       "Take the leap and experience the thrill of skydiving. Our certified instructors will guide you through every step, ensuring a safe and exhilarating jump.",
@@ -109,6 +213,7 @@ export const spots = [
   },
   {
     name: "Sea Sailing School",
+    tag: "sea",
     type: "Activity",
     description: "Learn to sail in the open sea with certified instructors.",
     longDescription:
@@ -124,6 +229,7 @@ export const spots = [
   },
   {
     name: "Wildlife Safari",
+    tag: "sea",
     type: "Activity",
     description:
       "Get up close with nature and wildlife in their natural habitat.",
@@ -140,6 +246,7 @@ export const spots = [
   },
   {
     name: "Sea Scuba Diving Discovery",
+    tag: "sea",
     type: "Activity",
     description: "Explore underwater worlds and marine life.",
     longDescription:
@@ -156,6 +263,7 @@ export const spots = [
   {
     name: "Snowboarding Camp",
     type: "Activity",
+    tag: "sea",
     description:
       "Hit the slopes with professional coaching and fun snowboarding sessions.",
     longDescription:
@@ -172,6 +280,7 @@ export const spots = [
   {
     name: "Yoga Retreat",
     type: "Activity",
+    tag: "sea",
     description: "Relax and rejuvenate with yoga sessions in serene locations.",
     longDescription:
       "Our yoga retreat offers a sanctuary for relaxation and rejuvenation. Engage in yoga sessions in serene locations, guided by expert instructors, and find your inner peace.",
@@ -185,23 +294,3 @@ export const spots = [
     numRating: 22,
   },
 ];
-
-
-export const smallStore = writable ([
-  {
-    name: "Biking for family",
-    type: "Bike Trail",
-    description: "Bike Trail for hard core",
-    longDescription:
-      "Bike Trail for hard core. Explore rivers and coastlines with guided kayak tours. Perfect for families looking to challenge themselves with exciting trails while enjoying the great outdoors.",
-    averageRating: 1,
-    pic: "Spots_bike_trail.JPG",
-    class: "star star4:before",
-    id: 0,
-    price: "$110.00",
-    address: "Placeholder for address",
-    website: "Placeholder for website",
-    phoneNumber: "Placeholder for phone number",
-    numRating: 1,
-  }
-]);

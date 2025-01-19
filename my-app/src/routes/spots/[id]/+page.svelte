@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { writable, get } from "svelte/store";
+  import { writable } from "svelte/store";
   import Swal from "sweetalert2";
   import type { PageData } from "./$types";
-  import Test from "$lib/components/Test.svelte";
 
   export let data: PageData;
 
@@ -28,10 +27,10 @@
     data.averageRating = newAverageRating;
   }
 
-  let selectedRating = writable(0);
+  $: selectedRating = writable(0);
 
   // Function to update rating for a spot
-  function rateItem(spotsId, newRating) {
+  function rateItem(spotsId: number, newRating: number) {
     console.log("Spot ID:", spotsId, "New Rating:", newRating);
 
     // spots.update((allItems) => {
@@ -53,7 +52,7 @@
     // });
   }
 
-  let ratingForm;
+  let ratingForm: FormData;
 </script>
 
 <div

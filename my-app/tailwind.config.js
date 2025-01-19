@@ -14,6 +14,7 @@ const config = {
 			}
 		},
 		extend: {
+
 			colors: {
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
@@ -47,6 +48,9 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
+				},
+				greenS: {
+					green: ""
 				}
 			},
 			borderRadius: {

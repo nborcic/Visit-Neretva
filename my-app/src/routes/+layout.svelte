@@ -1,5 +1,4 @@
 <script lang="ts">
-  import MapOfSpots from "./../lib/components/MapOfSpots.svelte";
   import "../app.css";
   import "$lib/sampleData.ts";
   import { goto } from "$app/navigation";
@@ -13,14 +12,12 @@
     { name: "Climb", q: "climb" },
     { name: "Heights", q: "high" },
   ];
-
-  
 </script>
 
-<div class="flex flex-col items-center h-screen">
-  <div class="max-w-[1280px] gap-4 flex flex-col bg-gray-100">
+<div class="flex flex-col items-center h-screen font-Manrope font-normal">
+  <div class="max-w-[1280px] gap-4 flex flex-col bg-white">
     <header class="sticky top-0 w-full">
-      <div class="w-full bg-gray-100">
+      <div class="w-full bg-white">
         <div
           class="flex justify-between items-center px-8 py-2 border-b border-b-gray-300"
         >
@@ -32,7 +29,7 @@
           <div class="flex gap-8 font-semibold">
             {#each links as link}
               <button
-                class="text-black rounded-2xl bg-gray-100 hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2 -600"
+                class="text-black rounded-2xl bg-white hover:bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2 -600"
                 on:click={() => goto("/search?q=" + link.q)}
               >
                 {link.name}
@@ -55,7 +52,7 @@
               type="submit"
               id="btn"
               disabled={!inputValue}
-              class="text-black rounded-2xl bg-gray-100 hover:bg-[rgb(232,158,61)] hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2"
+              class="text-black rounded-2xl bg-white hover:bg-[rgb(232,158,61)] hover:text-white focus:ring-4 focus:outline-none focus:ring-green-500 font-medium text-sm px-2 py-2"
               >Search</button
             >
           </div>
@@ -63,7 +60,7 @@
         <!-- Additional navigation and dropdowns -->
       </div>
     </header>
-    <div class="flex flex-col justify-center items-center bg-gray-100">
+    <div class="flex flex-col justify-center items-center bg-white">
       <main class="w-full">
         <slot />
       </main>

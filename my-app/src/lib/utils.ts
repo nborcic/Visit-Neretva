@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cubicOut } from "svelte/easing";
 import type { TransitionConfig } from "svelte/transition";
+import { goto } from "$app/navigation";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -60,3 +61,8 @@ export const flyAndScale = (
     easing: cubicOut,
   };
 };
+
+
+export function navigateToSpot(spotsid: number) {
+  goto(`/spots/${spotsid}`);
+}

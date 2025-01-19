@@ -1,45 +1,47 @@
-<script>
+<script lang="ts">
   export let data;
   let inputValue = "";
 
-  let searchResults = data.spots;
+  import { navigateToSpot } from "$lib/utils.ts";
+  $: searchResults = data.spots;
 </script>
 
 <div class="w-[1280px] h-[60%]">
   {#if searchResults.length > 0}
-    <div class="search-result">
+    <div><h1 class="text-4xl font-bold text-[#E89E3D]">Search result</h1></div>
+  {/if}
+  {#if searchResults.length > 0}
+    <div class="grid grid-cols-3 gap-4 w-full mx-auto">
       {#each searchResults as spot}
-        <div>
-          <div class="w-[1280px] flex flex-row gap-4 p-2">
-            <div class="flex flex-row justify-start">
-              <img src="/Spots_images/{spot.pic}" alt="" class="rounded-xl" />
-            </div>
-            <div class="w-[100%] flex flex-row rounded-xl">
-              <iframe
-                class="w-[100%] rounded-lg flex flex-row"
-                title="mapsIntergr"
-                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d223113.24054143653!2d17.65090174887212!3d43.097384819142725!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sno!4v1709719383814!5m2!1sen!2sno"
-                style="map"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+        <div
+          class="flex flex-col items-start gap-2 border-gray-400 hover:cursor-pointer rounded-xl shadow-md w-full font-Manrope h-[310px] hover:shadow-lg transition ease-in-out hover:bg-[rgb(232,158,61)]"
+          role="presentation"
+          on:click={() => navigateToSpot(spot.id)}
+        >
+          <div class="w-full h-[200px]">
+            <img
+              src="/Spots_images/{spot.pic}"
+              alt="Image for {spot.name}"
+              class="w-full h-full object-cover rounded-t-xl"
+            />
           </div>
-          <div class="shadow-xl rounded-xl">
-            <div class="font-bold p-2">
-              {spot.name} - {spot.phoneNumber}
-            </div>
-            <div class="font-medium p-2">
-              {spot.description} - {spot.website}
-            </div>
+
+          <div class="text-left font-medium text-2xl leading-[24px] mt-2 pl-4">
+            {spot.name}
+          </div>
+
+          <div class="text-left text-[16px] font-normal leading-[24px] pl-4">
+            {spot.description}
           </div>
         </div>
       {/each}
     </div>
   {:else}
-    <p class="font-semibold">
-      No results found. Please provide some text to search.
-    </p>
+    <div class="text-center w-[1280px] h-[60%]">
+      <p class="font-semibold">
+        No results found. Please provide some text to search.
+      </p>
+    </div>
   {/if}
   <slot />
 </div>
