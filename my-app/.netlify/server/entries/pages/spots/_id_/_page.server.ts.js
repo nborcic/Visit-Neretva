@@ -1,5 +1,4 @@
 import { s as spots } from "../../../../chunks/sampleData.js";
-import { promises } from "fs";
 async function load({ params }) {
   for (const spot of spots) {
     if (spot.id + "" == params.id) {
@@ -30,18 +29,12 @@ async function load({ params }) {
 const actions = {
   myform: async ({ request }) => {
     const formData = await request.formData();
-    const star = formData.get("star");
-    console.log("star chosen", star);
-    await updateDataFile(star);
+    const selRating = formData.get("selRating");
+    const spotId = formData.get("spotId");
+    console.log(spotId, selRating);
     return {};
   }
 };
-async function updateDataFile(newName) {
-  const filePath = "static/sampleData.json";
-  const data = JSON.parse(await promises.readFile(filePath, "utf8"));
-  data.name = newName;
-  await promises.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
-}
 export {
   actions,
   load

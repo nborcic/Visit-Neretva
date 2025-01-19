@@ -216,7 +216,7 @@ const spots = [
     description: "Get up close with nature and wildlife in their natural habitat.",
     longDescription: "Experience the thrill of a wildlife. Venture into the wilderness with our guides to see bird in their natural habitat, learn about conservation, and enjoy the beauty of nature.",
     averageRating: 3,
-    pic: "Spots_images/Bird_watching.png",
+    pic: "Bird_watching.png",
     id: 8,
     price: "$110.00",
     address: "123 Example St, City4, Country",

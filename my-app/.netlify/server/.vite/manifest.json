@@ -9,7 +9,7 @@
     ]
   },
   "_app.js": {
-    "file": "_app/immutable/assets/app.jko58p8S.css",
+    "file": "_app/immutable/assets/app.CRekBb6g.css",
     "src": "_app.js"
   },
   "_client.js": {
@@ -82,7 +82,7 @@
       "_client.js"
     ],
     "css": [
-      "_app/immutable/assets/app.jko58p8S.css"
+      "_app/immutable/assets/app.CRekBb6g.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -153,7 +153,7 @@
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/app.jko58p8S.css"
+      "_app/immutable/assets/app.CRekBb6g.css"
     ]
   },
   "src/routes/spots/[id]/+page.server.ts": {
